@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:39 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:25:38 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:19:15 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_object	*square_init(t_object *square, t_scene *scene)
 {
-	if (!(square = malloc(sizeof(t_object))))
+	square = malloc(sizeof(t_object));
+	if (!square)
 		error_handler("Can't allocate memory for square", scene);
 	square->type = SQUARE;
 	square->data = 0;
@@ -22,7 +23,7 @@ t_object	*square_init(t_object *square, t_scene *scene)
 	return (square);
 }
 
-t_sq		*fill_vector_sq(t_sq *data, char **arr, t_scene *scene)
+t_sq	*fill_vector_sq(t_sq *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -44,7 +45,7 @@ t_sq		*fill_vector_sq(t_sq *data, char **arr, t_scene *scene)
 	return (data);
 }
 
-t_sq		*fill_color_sq(t_sq *data, char **arr, t_scene *scene)
+t_sq	*fill_color_sq(t_sq *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -68,13 +69,15 @@ t_object	*add_square(char *line, t_scene *scene)
 	square = 0;
 	square = square_init(square, scene);
 	ft_check_line(line, scene);
-	if (!(data = malloc(sizeof(t_sq))))
+	data = malloc(sizeof(t_sq));
+	if (!data)
 		error_handler("Can't allocate memory for square data", scene);
 	arr = rt_split(line, " \t");
 	if (arr_len(arr) != 4)
 		error_handler("invalid number of arguments for square", scene);
 	data = fill_vector_sq(data, arr, scene);
-	if ((data->side = rt_atof(arr[2])) < 0)
+	data->side = rt_atof(arr[2]);
+	if (data->side < 0)
 		error_handler("square side size must be positive", scene);
 	data = fill_color_sq(data, arr, scene);
 	free_array(arr);
@@ -83,7 +86,7 @@ t_object	*add_square(char *line, t_scene *scene)
 	return (square);
 }
 
-void		parse_square(char *line, t_scene *scene)
+void	parse_square(char *line, t_scene *scene)
 {
 	t_object	*obj;
 

@@ -6,19 +6,19 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:52:24 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:27:05 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:26:47 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_cam		*cams_init(t_cam *cams)
+t_cam	*cams_init(t_cam *cams)
 {
 	cams->next = 0;
 	return (cams);
 }
 
-t_cam		*fill_vector_cam(t_cam *data, char **arr, t_scene *scene)
+t_cam	*fill_vector_cam(t_cam *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -40,7 +40,7 @@ t_cam		*fill_vector_cam(t_cam *data, char **arr, t_scene *scene)
 	return (data);
 }
 
-t_cam		*add_camera(char *line, t_scene *scene)
+t_cam	*add_camera(char *line, t_scene *scene)
 {
 	char	**arr;
 	t_cam	*cam;
@@ -49,7 +49,8 @@ t_cam		*add_camera(char *line, t_scene *scene)
 	arr = rt_split(line, " \t");
 	if (arr_len(arr) != 3)
 		error_handler("invalid number of arguments for camera", scene);
-	if (!(cam = malloc(sizeof(t_cam))))
+	cam = malloc(sizeof(t_cam));
+	if (!cam)
 		error_handler("Can't allocate memory for camera", scene);
 	cam = cams_init(cam);
 	cam = fill_vector_cam(cam, arr, scene);
@@ -60,7 +61,7 @@ t_cam		*add_camera(char *line, t_scene *scene)
 	return (cam);
 }
 
-void		parse_camera(char *line, t_scene *scene)
+void	parse_camera(char *line, t_scene *scene)
 {
 	t_cam	*cams;
 

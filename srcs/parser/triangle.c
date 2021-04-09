@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:40:58 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:25:30 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:21:21 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_object	*triangle_init(t_object *triangle, t_scene *scene)
 {
-	if (!(triangle = malloc(sizeof(t_object))))
+	triangle = malloc(sizeof(t_object));
+	if (!triangle)
 		error_handler("Can't allocate memory for triangle", scene);
 	triangle->type = TRIANGLE;
 	triangle->data = 0;
@@ -22,7 +23,7 @@ t_object	*triangle_init(t_object *triangle, t_scene *scene)
 	return (triangle);
 }
 
-t_tr		*fill_vector_tr(t_tr *data, char **arr, t_scene *scene)
+t_tr	*fill_vector_tr(t_tr *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -50,7 +51,7 @@ t_tr		*fill_vector_tr(t_tr *data, char **arr, t_scene *scene)
 	return (data);
 }
 
-t_tr		*fill_color_tr(t_tr *data, char **arr, t_scene *scene)
+t_tr	*fill_color_tr(t_tr *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -74,7 +75,8 @@ t_object	*add_triangle(char *line, t_scene *scene)
 	triangle = 0;
 	triangle = triangle_init(triangle, scene);
 	ft_check_line(line, scene);
-	if (!(data = malloc(sizeof(t_tr))))
+	data = malloc(sizeof(t_tr));
+	if (!data)
 		error_handler("Can't allocate memory for triangle data", scene);
 	arr = rt_split(line, " \t");
 	if (arr_len(arr) != 4)
@@ -83,13 +85,13 @@ t_object	*add_triangle(char *line, t_scene *scene)
 	data = fill_color_tr(data, arr, scene);
 	free_array(arr);
 	data->norm = vec_norm(vec_cross(vec_sub(data->v2, data->v1),
-	vec_sub(data->v3, data->v1)));
+				vec_sub(data->v3, data->v1)));
 	triangle->data = data;
 	triangle->equation = &tr_intersect;
 	return (triangle);
 }
 
-void		parse_triangle(char *line, t_scene *scene)
+void	parse_triangle(char *line, t_scene *scene)
 {
 	t_object	*obj;
 

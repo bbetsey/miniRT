@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atof.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 15:44:38 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/02/20 17:06:59 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:39:58 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static int	ft_isspace(char c)
 {
-	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' ||
-		c == '\r' || c == ' ')
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r' || c == ' ')
 		return (1);
 	return (0);
 }
 
-float		rt_atof(char *str)
+float	rt_atof(char *str)
 {
 	float	n;
 	int		sign;

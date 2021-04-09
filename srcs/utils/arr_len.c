@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   arr_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 18:25:23 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/02/20 18:38:52 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:40:09 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int			arr_len(char **arr)
+int	arr_len(char **arr)
 {
 	int		len;
 

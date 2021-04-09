@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:25:57 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:25:45 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:25:47 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_object	*sphere_init(t_object *sphere, t_scene *scene)
 {
-	if (!(sphere = malloc(sizeof(t_object))))
+	sphere = malloc(sizeof(t_object));
+	if (!sphere)
 		error_handler("Can't allocate memory for sphere", scene);
 	sphere->data = 0;
 	sphere->type = SPHERE;
@@ -22,7 +23,7 @@ t_object	*sphere_init(t_object *sphere, t_scene *scene)
 	return (sphere);
 }
 
-t_sp		*fill_vector_sp(t_sp *data, char **arr, t_scene *scene)
+t_sp	*fill_vector_sp(t_sp *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -36,7 +37,7 @@ t_sp		*fill_vector_sp(t_sp *data, char **arr, t_scene *scene)
 	return (data);
 }
 
-t_sp		*fill_color_sp(t_sp *data, char **arr, t_scene *scene)
+t_sp	*fill_color_sp(t_sp *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -60,13 +61,15 @@ t_object	*add_sphere(char *line, t_scene *scene)
 	sphere = 0;
 	sphere = sphere_init(sphere, scene);
 	ft_check_line(line, scene);
-	if (!(data = malloc(sizeof(t_sp))))
+	data = malloc(sizeof(t_sp));
+	if (!data)
 		error_handler("Can't allocate memory for sphere data", scene);
 	arr = rt_split(line, " \t");
 	if (arr_len(arr) != 3)
 		error_handler("invalid number of arguments for sphere", scene);
 	data = fill_vector_sp(data, arr, scene);
-	if ((data->d = rt_atof(arr[1])) < 0)
+	data->d = rt_atof(arr[1]);
+	if (data->d < 0)
 		error_handler("sphere diameter must be positive", scene);
 	data = fill_color_sp(data, arr, scene);
 	free_array(arr);
@@ -75,7 +78,7 @@ t_object	*add_sphere(char *line, t_scene *scene)
 	return (sphere);
 }
 
-void		parse_sphere(char *line, t_scene *scene)
+void	parse_sphere(char *line, t_scene *scene)
 {
 	t_object	*obj;
 

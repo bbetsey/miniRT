@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ambient.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 15:30:52 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 20:30:13 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:22:08 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		parse_ambient(char *line, t_scene *scene)
+void	parse_ambient(char *line, t_scene *scene)
 {
 	char	**arr;
 	char	**rgb;

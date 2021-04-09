@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rt.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:41 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/06 21:43:01 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:44:27 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		install_cams(t_scene *scene)
+void	install_cams(t_scene *scene)
 {
 	t_cam	*cams;
 
@@ -28,7 +28,7 @@ void		install_cams(t_scene *scene)
 	}
 }
 
-void		trace_ray(t_scene *scene)
+void	trace_ray(t_scene *scene)
 {
 	t_trace		trace;
 
@@ -50,12 +50,12 @@ void		trace_ray(t_scene *scene)
 	}
 }
 
-void		draw_image(t_scene *scene, int is_save)
+void	draw_image(t_scene *scene, int is_save)
 {
 	trace_ray(scene);
 	if (is_save)
 		create_image(scene);
 	else
 		mlx_put_image_to_window(scene->mlx, scene->window,
-		scene->img.img, 0, 0);
+			scene->img.img, 0, 0);
 }

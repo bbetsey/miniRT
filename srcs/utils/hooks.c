@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:30:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 20:08:20 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:35:24 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int			check_operator(int key_code)
+int	check_operator(int key_code)
 {
-	if (key_code == 13 || key_code == 1 || key_code == 0 ||
-	key_code == 2 || key_code == 3 || key_code == 15)
+	if (key_code == 13 || key_code == 1 || key_code == 0
+		|| key_code == 2 || key_code == 3 || key_code == 15)
 		return (1);
 	return (0);
 }
 
-void		next_camera(t_scene *scene)
+void	next_camera(t_scene *scene)
 {
 	if (scene->cams->next)
 	{
@@ -34,13 +34,13 @@ void		next_camera(t_scene *scene)
 	}
 }
 
-int			red_button(t_scene *scene)
+int	red_button(t_scene *scene)
 {
 	exit_minirt(scene);
 	return (0);
 }
 
-void		operator(t_scene *scene, int key_code)
+void	operator(t_scene *scene, int key_code)
 {
 	if (key_code == 13)
 		scene->cams->vec.z += 1;
@@ -57,7 +57,7 @@ void		operator(t_scene *scene, int key_code)
 	draw_image(scene, 0);
 }
 
-int			ft_key(int key_code, t_scene *scene)
+int	ft_key(int key_code, t_scene *scene)
 {
 	(void)scene;
 	print_command(key_code);

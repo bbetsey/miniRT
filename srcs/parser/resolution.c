@@ -6,13 +6,13 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 21:07:40 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:22:53 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:19:31 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		parse_resolution(char *line, t_scene *scene)
+void	parse_resolution(char *line, t_scene *scene)
 {
 	char	**arr;
 

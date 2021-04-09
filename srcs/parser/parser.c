@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:52:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 21:49:07 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:28:32 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		ft_check_line(char *line, t_scene *scene)
+void	ft_check_line(char *line, t_scene *scene)
 {
 	while (*line)
 	{
 		if ((*line < 48 || *line > 57) && *line != ' ' && *line
-		!= '\t' && *line != '.' && *line != ',' && *line != '-')
+			!= '\t' && *line != '.' && *line != ',' && *line != '-')
 			error_handler("Extra characters", scene);
 		line++;
 	}
 }
 
-void		parser(char *line, t_scene *scene)
+void	parser(char *line, t_scene *scene)
 {
 	if (!line)
 		error_handler("no line", scene);
@@ -47,12 +47,13 @@ void		parser(char *line, t_scene *scene)
 		parse_light(&line[1], scene);
 }
 
-int			ft_check_file(char *filename, t_scene *scene)
+int	ft_check_file(char *filename, t_scene *scene)
 {
 	int		i;
 	int		fd;
 
-	if ((fd = open(filename, O_RDONLY)) <= 0)
+	fd = open(filename, O_RDONLY);
+	if (fd <= 0)
 		error_handler("Can't open map", scene);
 	i = 0;
 	while (filename[i] != '.' && filename[i])
@@ -64,9 +65,10 @@ int			ft_check_file(char *filename, t_scene *scene)
 	return (fd);
 }
 
-t_scene		*scene_init(t_scene *scene)
+t_scene	*scene_init(t_scene *scene)
 {
-	if (!(scene = malloc(sizeof(t_scene))))
+	scene = malloc(sizeof(t_scene));
+	if (!scene)
 		error_handler("Can't allocate memory for scene", scene);
 	scene->res.check = 0;
 	scene->amb.check = 0;
@@ -78,15 +80,14 @@ t_scene		*scene_init(t_scene *scene)
 	return (scene);
 }
 
-void		read_and_parse_file(char *filename, t_scene **scene)
+void	read_and_parse_file(char *filename, t_scene **scene)
 {
 	int		fd;
-	int		ret;
 	char	*line;
 
 	fd = ft_check_file(filename, *scene);
 	(*scene) = scene_init(*scene);
-	while ((ret = get_next_line(fd, &line)) == 1)
+	while (get_next_line(fd, &line) == 1)
 	{
 		parser(line, *scene);
 		free(line);

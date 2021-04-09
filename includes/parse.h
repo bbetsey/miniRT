@@ -6,14 +6,14 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:33:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:17:59 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:34:23 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-typedef struct		s_data
+typedef struct s_data
 {
 	void			*img;
 	char			*addr;
@@ -22,7 +22,7 @@ typedef struct		s_data
 	int				endian;
 }					t_data;
 
-typedef struct		s_res
+typedef struct s_res
 {
 	int				check;
 	int				width;
@@ -30,21 +30,21 @@ typedef struct		s_res
 	float			ratio;
 }					t_res;
 
-typedef struct		s_color
+typedef struct s_color
 {
 	int				r;
 	int				g;
 	int				b;
 }					t_color;
 
-typedef struct		s_amb
+typedef struct s_amb
 {
 	int				check;
 	float			ratio;
 	t_color			rgb;
 }					t_amb;
 
-typedef struct		s_cam
+typedef struct s_cam
 {
 	t_vector		vec;
 	t_vector		n_vec;
@@ -56,7 +56,7 @@ typedef struct		s_cam
 	struct s_cam	*next;
 }					t_cam;
 
-typedef struct		s_light
+typedef struct s_light
 {
 	int				check;
 	t_vector		vec;
@@ -65,21 +65,21 @@ typedef struct		s_light
 	struct s_light	*next;
 }					t_light;
 
-typedef struct		s_sp
+typedef struct s_sp
 {
 	t_vector		vec;
 	float			d;
 	t_color			rgb;
 }					t_sp;
 
-typedef struct		s_pl
+typedef struct s_pl
 {
 	t_vector		vec;
 	t_vector		n_vec;
 	t_color			rgb;
 }					t_pl;
 
-typedef struct		s_cy
+typedef struct s_cy
 {
 	t_vector		vec;
 	t_vector		n_vec;
@@ -88,7 +88,7 @@ typedef struct		s_cy
 	t_color			rgb;
 }					t_cy;
 
-typedef struct		s_sq
+typedef struct s_sq
 {
 	t_vector		vec;
 	t_vector		n_vec;
@@ -96,7 +96,7 @@ typedef struct		s_sq
 	t_color			rgb;
 }					t_sq;
 
-typedef struct		s_tr
+typedef struct s_tr
 {
 	t_vector		v1;
 	t_vector		v2;
@@ -107,7 +107,7 @@ typedef struct		s_tr
 	double			d;
 }					t_tr;
 
-typedef struct		s_closest
+typedef struct s_closest
 {
 	double			length;
 	float			color;
@@ -116,29 +116,31 @@ typedef struct		s_closest
 	t_color			rgb;
 }					t_closest;
 
-typedef struct		s_limit
+typedef struct s_limit
 {
 	float		min;
 	float		max;
 }					t_limit;
 
-typedef struct		s_object
+enum e_type
 {
-	enum			e_type
-	{
-		SPHERE,
-		TRIANGLE,
-		PLANE,
-		SQUARE,
-		CYLINDER
-	}				type;
+	SPHERE,
+	TRIANGLE,
+	PLANE,
+	SQUARE,
+	CYLINDER
+};
+
+typedef struct s_object
+{
+	enum e_type		type;
 	t_closest		(*equation)(void *data, t_vector start,
 					t_vector ray, t_limit lim);
 	void			*data;
 	void			*next;
 }					t_object;
 
-typedef struct		s_scene
+typedef struct s_scene
 {
 	void			*mlx;
 	void			*window;

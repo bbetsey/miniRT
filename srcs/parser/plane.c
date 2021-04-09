@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:53:24 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:25:54 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:29:21 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_object	*plane_init(t_object *plane, t_scene *scene)
 {
-	if (!(plane = malloc(sizeof(t_object))))
+	plane = malloc(sizeof(t_object));
+	if (!plane)
 		error_handler("Can't allocate memory for plane", scene);
 	plane->type = PLANE;
 	plane->data = 0;
@@ -22,7 +23,7 @@ t_object	*plane_init(t_object *plane, t_scene *scene)
 	return (plane);
 }
 
-t_pl		*fill_vector_pl(t_pl *data, char **arr, t_scene *scene)
+t_pl	*fill_vector_pl(t_pl *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -44,7 +45,7 @@ t_pl		*fill_vector_pl(t_pl *data, char **arr, t_scene *scene)
 	return (data);
 }
 
-t_pl		*fill_color_pl(t_pl *data, char **arr, t_scene *scene)
+t_pl	*fill_color_pl(t_pl *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -68,7 +69,8 @@ t_object	*add_plane(char *line, t_scene *scene)
 	plane = 0;
 	plane = plane_init(plane, scene);
 	ft_check_line(line, scene);
-	if (!(data = malloc(sizeof(t_pl))))
+	data = malloc(sizeof(t_pl));
+	if (!data)
 		error_handler("Can't allocate memory for plane data", scene);
 	arr = rt_split(line, " \t");
 	if (arr_len(arr) != 3)
@@ -81,7 +83,7 @@ t_object	*add_plane(char *line, t_scene *scene)
 	return (plane);
 }
 
-void		parse_plane(char *line, t_scene *scene)
+void	parse_plane(char *line, t_scene *scene)
 {
 	t_object	*obj;
 

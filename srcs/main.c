@@ -3,30 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:23:47 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 21:41:05 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:12:22 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		install_window(t_scene *scene)
+void	install_window(t_scene *scene)
 {
-	if (!(scene->window = mlx_new_window(scene->mlx,
-	scene->res.width, scene->res.height, "miniRT")))
+	scene->window = mlx_new_window(scene->mlx,
+			scene->res.width, scene->res.height, "miniRT");
+	if (!scene->window)
 		error_handler("can't install mlx window", scene);
 	scene->img.img = mlx_new_image(scene->mlx, scene->res.width,
-	scene->res.height);
+			scene->res.height);
 	scene->img.addr = mlx_get_data_addr(scene->img.img,
-	&scene->img.bits_per_pixel, &scene->img.line_length,
-	&scene->img.endian);
+			&scene->img.bits_per_pixel, &scene->img.line_length,
+			&scene->img.endian);
 }
 
-void		start_ray_tracing(t_scene *scene)
+void	start_ray_tracing(t_scene *scene)
 {
-	if (!(scene->mlx = mlx_init()))
+	scene->mlx = mlx_init();
+	if (!scene->mlx)
 		error_handler("can't init mlx", scene);
 	install_window(scene);
 	install_cams(scene);
@@ -36,7 +38,7 @@ void		start_ray_tracing(t_scene *scene)
 	mlx_loop(scene->mlx);
 }
 
-void		check_resolution(t_scene *scene)
+void	check_resolution(t_scene *scene)
 {
 	int		sizex;
 	int		sizey;
@@ -45,18 +47,18 @@ void		check_resolution(t_scene *scene)
 	if (scene->res.width > sizex)
 	{
 		printf(BOLDYELLOW "Too large reolution width." RESET
-		" New width: %d\n", sizex);
+			" New width: %d\n", sizex);
 		scene->res.width = sizex;
 	}
 	if (scene->res.height > sizey)
 	{
 		printf(BOLDYELLOW "Too large reolution height." RESET
-		" New height: %d\n", sizey);
+			" New height: %d\n", sizey);
 		scene->res.height = sizey;
 	}
 }
 
-int			main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_scene		*scene;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:17:54 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 21:39:21 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:42:22 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_closest	find_closest(t_closest solution, t_closest closest)
 	return (closest);
 }
 
-int			intersect(t_scene *scene)
+int	intersect(t_scene *scene)
 {
 	t_object	*obj;
 	t_closest	closest;
@@ -43,7 +43,7 @@ int			intersect(t_scene *scene)
 	while (obj)
 	{
 		solution = obj->equation(obj->data, scene->cams->vec,
-		scene->ray, scene->lim);
+				scene->ray, scene->lim);
 		closest = find_closest(solution, closest);
 		obj = obj->next;
 	}

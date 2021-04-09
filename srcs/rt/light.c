@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:24:11 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/02 21:32:34 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:43:31 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-float		light_point(t_vector n, t_vector l, float ratio)
+float	light_point(t_vector n, t_vector l, float ratio)
 {
 	float	dot;
 
@@ -22,7 +22,7 @@ float		light_point(t_vector n, t_vector l, float ratio)
 	return (0);
 }
 
-float		make_specular(t_vector n, t_vector l, t_vector ray, float rat)
+float	make_specular(t_vector n, t_vector l, t_vector ray, float rat)
 {
 	float		dot;
 	t_vector	r;
@@ -36,7 +36,7 @@ float		make_specular(t_vector n, t_vector l, t_vector ray, float rat)
 	return (0);
 }
 
-float		compute_lightning(t_scene *scene, t_light *light,
+float	compute_lightning(t_scene *scene, t_light *light,
 t_vector intersect, t_vector n)
 {
 	float		i;
@@ -61,7 +61,7 @@ t_vector intersect, t_vector n)
 	return (i);
 }
 
-t_color		compute_color(t_closest closest, t_scene *scene)
+t_color	compute_color(t_closest closest, t_scene *scene)
 {
 	float		i;
 	t_color		ret;
@@ -73,7 +73,7 @@ t_color		compute_color(t_closest closest, t_scene *scene)
 	{
 		i = compute_lightning(scene, light, closest.intersect, closest.norm);
 		ret = color_sum(ret, color_mix(closest.rgb,
-		color_multi(light->rgb, i)));
+					color_multi(light->rgb, i)));
 		light = light->next;
 		i = 0.0;
 	}

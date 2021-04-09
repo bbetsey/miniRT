@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:26:44 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 21:44:09 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:30:34 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		free_array(char **arr)
+void	free_array(char **arr)
 {
 	int		i;
 
@@ -25,7 +25,7 @@ void		free_array(char **arr)
 	free(arr);
 }
 
-void		free_lights(t_scene *scene)
+void	free_lights(t_scene *scene)
 {
 	t_light		*light;
 
@@ -37,7 +37,7 @@ void		free_lights(t_scene *scene)
 	}
 }
 
-void		free_obj(t_scene *scene)
+void	free_obj(t_scene *scene)
 {
 	struct s_object	*buf;
 
@@ -50,7 +50,7 @@ void		free_obj(t_scene *scene)
 	}
 }
 
-void		free_cams(t_scene *scene)
+void	free_cams(t_scene *scene)
 {
 	struct s_cam	*buf;
 
@@ -64,7 +64,7 @@ void		free_cams(t_scene *scene)
 		free(scene->first_cam);
 }
 
-void		free_scene(t_scene *scene)
+void	free_scene(t_scene *scene)
 {
 	if (!scene)
 		return ;

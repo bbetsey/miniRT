@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:49:11 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/03/30 14:49:34 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:41:40 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double		sq_closest(t_limit lim, double t, t_closest *closest, t_sq *sq)
+double	sq_closest(t_limit lim, double t, t_closest *closest, t_sq *sq)
 {
 	if (t >= lim.min && t <= lim.max)
 	{

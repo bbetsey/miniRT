@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   bmp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 20:38:57 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 17:11:56 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:39:12 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		create_bmp(char **data, t_scene *scene)
+void	create_bmp(char **data, t_scene *scene)
 {
-	int i;
-	int j;
-	int x;
-	int y;
+	int		i;
+	int		j;
+	int		x;
+	int		y;
 
 	i = 120;
 	y = scene->res.height;
@@ -26,8 +26,8 @@ void		create_bmp(char **data, t_scene *scene)
 		x = -1;
 		while (++x < scene->res.width)
 		{
-			j = (x * (scene->img.bits_per_pixel / 8)) +
-			(y * scene->img.line_length);
+			j = (x * (scene->img.bits_per_pixel / 8))
+				+ (y * scene->img.line_length);
 			*(*data + i++) = *(scene->img.addr + j++);
 			*(*data + i++) = *(scene->img.addr + j++);
 			*(*data + i++) = *(scene->img.addr + j);
@@ -35,9 +35,9 @@ void		create_bmp(char **data, t_scene *scene)
 	}
 }
 
-void		write_header_bmp(char **data, t_scene *scene)
+void	write_header_bmp(char **data, t_scene *scene)
 {
-	unsigned int size;
+	unsigned int	size;
 
 	size = scene->res.height * scene->res.width * 3;
 	*(unsigned short *)*data = *(const unsigned int *)(unsigned long)"BM";
@@ -57,7 +57,7 @@ void		write_header_bmp(char **data, t_scene *scene)
 	*(int *)(*data + 50) = 0;
 }
 
-void		create_image(t_scene *scene)
+void	create_image(t_scene *scene)
 {
 	int				fd;
 	unsigned int	size;
@@ -65,25 +65,28 @@ void		create_image(t_scene *scene)
 	char			*data;
 
 	size = scene->res.height * scene->res.width * 3;
-	if (!(data = malloc((size + 120))))
+	data = malloc(size + 120);
+	if (!data)
 		error_handler("Can't allocate memory", scene);
 	i = 0;
 	while (i < size + 120)
 		data[i++] = 0;
 	write_header_bmp(&data, scene);
 	create_bmp(&data, scene);
-	if ((fd = open("img.bmp", O_CREAT | O_TRUNC | O_RDWR, 0644)) <= 0)
-		error_handler("Can't allocate memory", scene);
+	fd = open("img.bmp", O_CREAT | O_TRUNC | O_RDWR, 0644);
+	if (fd <= 0)
+		error_handler("Can't open file", scene);
 	write(fd, data, (size + 120));
 	close(fd);
 }
 
-void		save_image(t_scene *scene, char *filename)
+void	save_image(t_scene *scene, char *filename)
 {
 	read_and_parse_file(filename, &scene);
 	scene->first_cam = scene->cams;
 	check_resolution(scene);
-	if (!(scene->mlx = mlx_init()))
+	scene->mlx = mlx_init();
+	if (!scene->mlx)
 		error_handler("can't init mlx", scene);
 	install_window(scene);
 	install_cams(scene);

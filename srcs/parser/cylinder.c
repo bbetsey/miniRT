@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:09:47 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/07 12:26:15 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:24:43 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_object	*cylinder_init(t_object *cylinder, t_scene *scene)
 {
-	if (!(cylinder = malloc(sizeof(t_object))))
+	cylinder = malloc(sizeof(t_object));
+	if (!cylinder)
 		error_handler("Can't allocate memory for cylinder", scene);
 	cylinder->type = CYLINDER;
 	cylinder->data = 0;
@@ -22,7 +23,7 @@ t_object	*cylinder_init(t_object *cylinder, t_scene *scene)
 	return (cylinder);
 }
 
-t_cy		*fill_vector_cy(t_cy *data, char **arr, t_scene *scene)
+t_cy	*fill_vector_cy(t_cy *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -44,7 +45,7 @@ t_cy		*fill_vector_cy(t_cy *data, char **arr, t_scene *scene)
 	return (data);
 }
 
-t_cy		*fill_color_cy(t_cy *data, char **arr, t_scene *scene)
+t_cy	*fill_color_cy(t_cy *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -71,13 +72,14 @@ t_object	*add_cylinder(char *line, t_scene *scene)
 	arr = rt_split(line, " \t");
 	if (arr_len(arr) != 5)
 		error_handler("invalid number of arguments for cylinder", scene);
-	if (!(data = malloc(sizeof(t_cy))))
+	data = malloc(sizeof(t_cy));
+	if (!data)
 		error_handler("Can't allocate memory for cylinder data", scene);
 	data = fill_vector_cy(data, arr, scene);
-	if ((data->d = rt_atof(arr[2])) < 0)
-		error_handler("cylinder diameter must be positive", scene);
-	if ((data->h = rt_atof(arr[3])) < 0)
-		error_handler("cylinder height must be positive", scene);
+	data->d = rt_atof(arr[2]);
+	data->h = rt_atof(arr[3]);
+	if (data->d < 0 || data->h < 0)
+		error_handler("cylinder diameter or height must be positive", scene);
 	data = fill_color_cy(data, arr, scene);
 	data->n_vec = vec_norm(data->n_vec);
 	free_array(arr);
@@ -86,7 +88,7 @@ t_object	*add_cylinder(char *line, t_scene *scene)
 	return (cylinder);
 }
 
-void		parse_cylinder(char *line, t_scene *scene)
+void	parse_cylinder(char *line, t_scene *scene)
 {
 	t_object	*obj;
 

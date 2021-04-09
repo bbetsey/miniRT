@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 21:14:21 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/02 20:52:57 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:26:42 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vector		rotate_normal(t_vector dir, t_vector norm)
+t_vector	rotate_normal(t_vector dir, t_vector norm)
 {
 	double		tmp;
 
@@ -22,20 +22,20 @@ t_vector		rotate_normal(t_vector dir, t_vector norm)
 	return (vec_multi(vec_norm(norm), -1));
 }
 
-t_vector		multi_matrix(t_vector vec, t_matrix mtrx)
+t_vector	multi_matrix(t_vector vec, t_matrix mtrx)
 {
 	t_vector	result;
 
-	result.x = vec.x * mtrx.right.x + vec.y * mtrx.up.x + vec.z *
-	mtrx.forward.x + mtrx.origin.x;
-	result.y = vec.x * mtrx.right.y + vec.y * mtrx.up.y + vec.z *
-	mtrx.forward.y + mtrx.origin.y;
-	result.z = vec.x * mtrx.right.z + vec.y * mtrx.up.z + vec.z *
-	mtrx.forward.z + mtrx.origin.z;
+	result.x = vec.x * mtrx.right.x + vec.y * mtrx.up.x + vec.z
+		* mtrx.forward.x + mtrx.origin.x;
+	result.y = vec.x * mtrx.right.y + vec.y * mtrx.up.y + vec.z
+		* mtrx.forward.y + mtrx.origin.y;
+	result.z = vec.x * mtrx.right.z + vec.y * mtrx.up.z + vec.z
+		* mtrx.forward.z + mtrx.origin.z;
 	return (result);
 }
 
-t_matrix		look_at(t_vector eye, t_vector dir)
+t_matrix	look_at(t_vector eye, t_vector dir)
 {
 	t_matrix	mtrx;
 	t_vector	tmp;
@@ -53,7 +53,7 @@ t_matrix		look_at(t_vector eye, t_vector dir)
 	return (mtrx);
 }
 
-t_vector		make_ray(double x, double y, t_cam *cam)
+t_vector	make_ray(double x, double y, t_cam *cam)
 {
 	t_matrix	mtrx;
 	t_vector	dir;

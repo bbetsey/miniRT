@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:09:15 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/02 18:52:36 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:17:17 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double		pl_closest(t_limit lim, float t, t_closest *closest, t_pl *pl)
+double	pl_closest(t_limit lim, float t, t_closest *closest, t_pl *pl)
 {
 	if (t >= lim.min && t <= lim.max)
 	{

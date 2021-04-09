@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   triangle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 20:43:23 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/03/31 13:59:05 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:42:39 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double		tr_closest(t_limit lim, double t, t_closest *closest, t_tr *tr)
+double	tr_closest(t_limit lim, double t, t_closest *closest, t_tr *tr)
 {
 	if (t >= lim.min && t <= lim.max)
 	{
@@ -23,7 +23,7 @@ double		tr_closest(t_limit lim, double t, t_closest *closest, t_tr *tr)
 	return (0);
 }
 
-int			tr_check(t_tr *tr, t_vector intersect, t_vector norm)
+int	tr_check(t_tr *tr, t_vector intersect, t_vector norm)
 {
 	t_vector	tmp;
 

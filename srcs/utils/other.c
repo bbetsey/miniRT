@@ -3,32 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:22:06 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 20:11:57 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:34:38 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
-int			create_trgb(int t, int r, int g, int b)
+int	create_trgb(int t, int r, int g, int b)
 {
-	r = r > 255 ? 255 : r;
-	g = g > 255 ? 255 : g;
-	b = b > 255 ? 255 : b;
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void		print_command(int key_code)
+void	print_command(int key_code)
 {
 	if (key_code == 13)
 		write(1, "Move Forward\n", 13);
@@ -54,15 +57,15 @@ void		print_command(int key_code)
 		write(1, "Left Camera\n", 12);
 }
 
-int			check_dir(int key_code)
+int	check_dir(int key_code)
 {
-	if (key_code == 123 || key_code == 124 || key_code == 125 ||
-	key_code == 126)
+	if (key_code == 123 || key_code == 124 || key_code == 125
+		|| key_code == 126)
 		return (1);
 	return (0);
 }
 
-void		change_dir_operator(t_scene *scene, int key_code)
+void	change_dir_operator(t_scene *scene, int key_code)
 {
 	if (key_code == 126)
 	{

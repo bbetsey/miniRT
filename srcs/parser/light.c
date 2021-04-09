@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:06:30 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 20:30:58 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 16:21:59 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_light			*light_init(t_light *light, t_scene *scene)
+t_light	*light_init(t_light *light, t_scene *scene)
 {
-	if (!(light = malloc(sizeof(t_light))))
+	light = malloc(sizeof(t_light));
+	if (!light)
 		error_handler("Can't allocate memory for light", scene);
 	light->next = 0;
 	light->check = 0;
 	return (light);
 }
 
-t_light			*fill_color_l(t_light *light, char **arr, t_scene *scene)
+t_light	*fill_color_l(t_light *light, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -36,7 +37,7 @@ t_light			*fill_color_l(t_light *light, char **arr, t_scene *scene)
 	return (light);
 }
 
-t_light			*add_light(char *line, t_scene *scene)
+t_light	*add_light(char *line, t_scene *scene)
 {
 	t_light		*light;
 	char		**arr;
@@ -64,7 +65,7 @@ t_light			*add_light(char *line, t_scene *scene)
 	return (light);
 }
 
-void			parse_light(char *line, t_scene *scene)
+void	parse_light(char *line, t_scene *scene)
 {
 	t_light		*light;
 

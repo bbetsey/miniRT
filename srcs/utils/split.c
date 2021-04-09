@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 21:04:15 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/02/20 14:29:05 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:29:47 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static char		**make_arr(char const *s, char *c)
+static char	**make_arr(char const *s, char *c)
 {
 	int		i;
 	char	**arr;
@@ -38,7 +38,7 @@ static char		**make_arr(char const *s, char *c)
 	return (arr);
 }
 
-static char		**fail_malloc(char **arr, int i)
+static char	**fail_malloc(char **arr, int i)
 {
 	int		n;
 
@@ -52,7 +52,7 @@ static char		**fail_malloc(char **arr, int i)
 	return (0);
 }
 
-static char		*make_str(char const *s, char *c, char **arr, int i)
+static char	*make_str(char const *s, char *c, char **arr, int i)
 {
 	int		str_len;
 	char	*str;
@@ -77,7 +77,7 @@ static char		*make_str(char const *s, char *c, char **arr, int i)
 	return (buf_str);
 }
 
-char			**rt_split(char const *s, char *c)
+char	**rt_split(char const *s, char *c)
 {
 	char	**arr;
 	int		i;
@@ -94,7 +94,8 @@ char			**rt_split(char const *s, char *c)
 			s++;
 		else
 		{
-			if (!(arr[i] = make_str(s, c, arr, i)))
+			arr[i] = make_str(s, c, arr, i);
+			if (!arr[i])
 				return (0);
 			i++;
 			while (*s && *s != c[0] && *s != c[1])

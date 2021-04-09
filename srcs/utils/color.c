@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 22:10:40 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/03/30 14:53:23 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:40:21 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color		color_mix(t_color c1, t_color c2)
+t_color	color_mix(t_color c1, t_color c2)
 {
 	t_color	mix;
 
@@ -22,7 +22,7 @@ t_color		color_mix(t_color c1, t_color c2)
 	return (mix);
 }
 
-t_color		color_sum(t_color c1, t_color c2)
+t_color	color_sum(t_color c1, t_color c2)
 {
 	t_color	mix;
 
@@ -32,7 +32,7 @@ t_color		color_sum(t_color c1, t_color c2)
 	return (mix);
 }
 
-t_color		color_multi(t_color c, double i)
+t_color	color_multi(t_color c, double i)
 {
 	c.r *= i;
 	c.g *= i;

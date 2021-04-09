@@ -6,13 +6,13 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 13:11:07 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/02/02 15:26:51 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:10:05 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		*ft_bzero(void *s, size_t n)
+void	*ft_bzero(void *s, size_t n)
 {
 	unsigned char	*buf;
 
@@ -26,7 +26,7 @@ void		*ft_bzero(void *s, size_t n)
 	return (s);
 }
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t		len;
 
@@ -41,20 +41,17 @@ size_t		ft_strlen(const char *str)
 	return (len);
 }
 
-char		*ft_strcpy(char *dst, char *src)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*buf_dst;
+	void	*array;
 
-	if (!dst)
+	array = malloc(count * size);
+	if (!array)
 		return (0);
-	buf_dst = dst;
-	while (*src)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (buf_dst);
+	return (ft_bzero(array, count * size));
 }
 
-char		*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
 	while (*str)
 	{
@@ -67,7 +64,7 @@ char		*ft_strchr(const char *str, int c)
 	return (0);
 }
 
-char		*ft_strdup(const char *str)
+char	*ft_strdup(const char *str)
 {
 	int		len;
 	char	*copy;

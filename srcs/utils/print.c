@@ -6,13 +6,13 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 23:53:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/06 16:57:15 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:25:20 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		print_cameras(t_scene *scene)
+void	print_cameras(t_scene *scene)
 {
 	t_cam		*cam;
 
@@ -20,13 +20,13 @@ void		print_cameras(t_scene *scene)
 	while (cam)
 	{
 		printf("Camera:\t\t[%.1f, %.1f, %.1f] [%.1f, %.1f, %.1f] [%.1f]\n",
-		cam->vec.x, cam->vec.y, cam->vec.z, cam->n_vec.x,
-		cam->n_vec.y, cam->n_vec.z, cam->fov);
+			cam->vec.x, cam->vec.y, cam->vec.z, cam->n_vec.x,
+			cam->n_vec.y, cam->n_vec.z, cam->fov);
 		cam = cam->next;
 	}
 }
 
-void		print_objects(t_scene *scene)
+void	print_objects(t_scene *scene)
 {
 	t_object	*obj;
 
@@ -47,21 +47,21 @@ void		print_objects(t_scene *scene)
 	}
 }
 
-void		print_scene(t_scene *scene)
+void	print_scene(t_scene *scene)
 {
 	t_light		*light;
 
 	printf("Resolution:\t[%d] [%d]\n", scene->res.width, scene->res.height);
 	printf("Ambient:\t[%.1f] [R:%d G:%d B:%d]\n", scene->amb.ratio,
-	scene->amb.rgb.r, scene->amb.rgb.g, scene->amb.rgb.b);
+		scene->amb.rgb.r, scene->amb.rgb.g, scene->amb.rgb.b);
 	print_cameras(scene);
 	light = scene->light;
 	while (light)
 	{
 		printf("Light:\t\t[%.1f %.1f %.1f] [%.1f] [%d %d %d]\n",
-		light->vec.x, light->vec.y, light->vec.z,
-		light->ratio, light->rgb.r, light->rgb.g,
-		light->rgb.b);
+			light->vec.x, light->vec.y, light->vec.z,
+			light->ratio, light->rgb.r, light->rgb.g,
+			light->rgb.b);
 		light = light->next;
 	}
 	print_objects(scene);

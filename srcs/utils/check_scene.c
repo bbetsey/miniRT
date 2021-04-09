@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 16:16:23 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 21:48:56 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:24:21 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		check_rgb(t_color rgb, t_scene *scene)
+void	check_rgb(t_color rgb, t_scene *scene)
 {
 	if (rgb.r < 0 || rgb.r > 255)
 		error_handler("wrong RGB", scene);
@@ -22,7 +22,7 @@ void		check_rgb(t_color rgb, t_scene *scene)
 		error_handler("wrong RGB", scene);
 }
 
-void		check_scene(t_scene *scene)
+void	check_scene(t_scene *scene)
 {
 	t_light		*light;
 
@@ -43,7 +43,7 @@ void		check_scene(t_scene *scene)
 	}
 }
 
-void		check_normal(t_vector n, t_scene *scene)
+void	check_normal(t_vector n, t_scene *scene)
 {
 	if (n.x > 1 || n.x < -1)
 		error_handler("wrong normal [-1; 1]", scene);
