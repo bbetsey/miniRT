@@ -6,7 +6,7 @@
 #    By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/09 14:37:09 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/09 17:17:14 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,13 +69,14 @@ ${NAME}	:		${OBJS}
 				@make -C mlx/
 				@make -C mlx_mms/
 				@mv mlx_mms/libmlx.dylib libmlx.dylib
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} ${MLX_MMS} -I ${DIR_HEADERS} ${MLX} ${OBJS} -o ${NAME}
-
+				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res.c
+				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} ${MLX_MMS} -I ${DIR_HEADERS} ${MLX} check_res.o ${OBJS} -o ${NAME}
 				@echo && echo "\033[1m\033[32mAssembled ⚑\033[0m"
 
-limited	:		${OBJS}
+macos	:		${OBJS}
 				@make -C mlx/
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} -o ${NAME}
+				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res_lim.c
+				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} check_res_lim.o -o ${NAME}
 				@echo && echo "\033[1m\033[32mAssembled ⚑\033[0m"
 
 %.o		: 		%.c
@@ -86,7 +87,7 @@ norm	:
 				@norminette includes/get_next_line.h includes/minirt.h includes/parse.h includes/utils.h includes/vector.h includes/rt.h
 
 clean	:
-				@rm -rf ${OBJS} && rm -f img.bmp
+				@rm -rf ${OBJS} && rm -f check_res.o check_res_lim.o && rm -f img.bmp
 
 fclean	:		clean
 				@rm -f ${NAME}
@@ -96,11 +97,6 @@ re		:		fclean all
 bonus	:		all
 
 .PHONY	:		all, clean, fclean, re, bonus
-
-test	:		re
-				@echo
-				@./${NAME} scenes/example.rt
-				@rm -rf ${OBJS} ${NAME}
 
 leaks	:		re
 				@valgrind ./miniRT example.rt --leak-check=full

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:29:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/08 20:04:53 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 17:03:56 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void		create_image(t_scene *scene);
 void		print_command(int key_code);
 void		change_dir_operator(t_scene *scene, int key_code);
 int			check_dir(int key_code);
+void		check_resolution(t_scene *scene);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:23:47 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:12:22 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 17:00:10 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,6 @@ void	start_ray_tracing(t_scene *scene)
 	draw_image(scene, 0);
 	mlx_hook(scene->window, 17, 1L << 17, red_button, scene);
 	mlx_loop(scene->mlx);
-}
-
-void	check_resolution(t_scene *scene)
-{
-	int		sizex;
-	int		sizey;
-
-	mlx_get_screen_size(scene->mlx, &sizex, &sizey);
-	if (scene->res.width > sizex)
-	{
-		printf(BOLDYELLOW "Too large reolution width." RESET
-			" New width: %d\n", sizex);
-		scene->res.width = sizex;
-	}
-	if (scene->res.height > sizey)
-	{
-		printf(BOLDYELLOW "Too large reolution height." RESET
-			" New height: %d\n", sizey);
-		scene->res.height = sizey;
-	}
 }
 
 int	main(int argc, char **argv)
