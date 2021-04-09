@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 16:16:23 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:24:21 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:32:51 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	check_scene(t_scene *scene)
 
 	if (scene->cams == 0)
 		error_handler("No one camera", scene);
-	if (!(scene->amb.check) || !(scene->res.check) || !(scene->light))
-		error_handler("No ambient or resolution or light", scene);
+	if (!(scene->amb.check) || !(scene->res.check))
+		error_handler("No ambient or resolution", scene);
 	check_rgb(scene->amb.rgb, scene);
 	light = scene->light;
 	if (!light)
