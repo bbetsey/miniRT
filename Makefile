@@ -6,7 +6,7 @@
 #    By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/09 17:34:40 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/11 00:35:29 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC			=	main.c\
 				rt/square.c\
 				rt/cylinder.c\
 				rt/light.c\
+				rt/thread.c\
 				\
 				utils/atoi.c\
 				utils/atof.c\
@@ -70,13 +71,13 @@ ${NAME}	:		${OBJS}
 				@make -C mlx_mms/
 				@mv mlx_mms/libmlx.dylib libmlx.dylib
 				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res.c
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} ${MLX_MMS} -I ${DIR_HEADERS} ${MLX} check_res.o ${OBJS} -o ${NAME}
+				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} ${MLX_MMS} -I ${DIR_HEADERS} ${MLX} check_res.o ${OBJS} -o ${NAME} -lpthread
 				@echo && echo "\033[1m\033[32mAssembled ⚑\033[0m"
 
 macos	:		${OBJS}
 				@make -C mlx/
 				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res_lim.c
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} check_res_lim.o -o ${NAME}
+				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} check_res_lim.o -o ${NAME} -lpthread
 				@echo && echo "\033[1m\033[32mAssembled ⚑\033[0m"
 
 %.o		: 		%.c

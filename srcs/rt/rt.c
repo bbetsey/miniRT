@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:41 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:44:27 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/11 00:43:56 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,38 @@ void	install_cams(t_scene *scene)
 	}
 }
 
+void	pixel_put(t_thr_data *data, t_scene *scene)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < scene->res.height)
+	{
+		x = 0;
+		while (x < scene->res.width)
+		{
+			my_mlx_pixel_put(&scene->img, x, y, data[y].colors[x]);
+			x++;
+		}
+		free(data[y].colors);
+		y++;
+	}
+}
+
 void	trace_ray(t_scene *scene)
 {
-	t_trace		trace;
+	t_thr_data	*data;
+	pthread_t	*threads;
 
-	trace.j = 0;
-	trace.y = scene->res.height / 2;
-	while (trace.y > scene->res.height / (-2))
-	{
-		trace.i = 0;
-		trace.x = scene->res.width / (-2);
-		while (trace.x < scene->res.width / 2)
-		{
-			scene->ray = make_ray(trace.x, trace.y, scene->cams);
-			trace.color = intersect(scene);
-			my_mlx_pixel_put(&scene->img, trace.i++, trace.j, trace.color);
-			trace.x++;
-		}
-		trace.j++;
-		trace.y--;
-	}
+	data = malloc(sizeof(t_thr_data) * scene->res.height);
+	data = ft_bzero(data, scene->res.height);
+	threads = malloc(sizeof(pthread_t) * scene->res.height);
+	init_thread_data(scene, data, threads);
+	wait_threads(threads, scene->res.height);
+	pixel_put(data, scene);
+	free(threads);
+	free(data);
 }
 
 void	draw_image(t_scene *scene, int is_save)

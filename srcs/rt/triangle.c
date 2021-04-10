@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 20:43:23 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:42:39 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/10 22:29:47 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	tr_check(t_tr *tr, t_vector intersect, t_vector norm)
 	t_vector	tmp;
 
 	tmp = vec_cross(vec_sub(tr->v2, tr->v1), vec_sub(intersect, tr->v1));
-	if (vec_dot(norm, tmp) < 0)
+	if (vec_dot(norm, tmp) < -0.0001)
 		return (0);
 	tmp = vec_cross(vec_sub(tr->v3, tr->v2), vec_sub(intersect, tr->v2));
-	if (vec_dot(norm, tmp) < 0)
+	if (vec_dot(norm, tmp) < -0.0001)
 		return (0);
 	tmp = vec_cross(vec_sub(tr->v1, tr->v3), vec_sub(intersect, tr->v3));
-	if (vec_dot(norm, tmp) < 0)
+	if (vec_dot(norm, tmp) < -0.0001)
 		return (0);
 	return (1);
 }

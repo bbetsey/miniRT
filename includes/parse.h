@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:33:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:34:23 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/10 14:40:35 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,10 @@ typedef struct s_scene
 {
 	void			*mlx;
 	void			*window;
-	t_limit			lim;
+	double			x_start;
+	double			y_start;
+	double			x_end;
+	double			y_end;
 	t_vector		ray;
 	t_data			img;
 	t_res			res;

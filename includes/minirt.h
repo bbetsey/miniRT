@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:24:10 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/06 16:24:00 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/10 13:58:53 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdarg.h>
+# include <pthread.h>
 
 # include "mlx.h"
 # include "mlx_mms.h"

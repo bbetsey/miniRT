@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 16:16:23 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 19:32:51 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:32:21 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,12 @@ void	check_normal(t_vector n, t_scene *scene)
 		error_handler("wrong normal [-1; 1]", scene);
 	if (n.z > 1 || n.z < -1)
 		error_handler("wrong normal [-1; 1]", scene);
+}
+
+void	install_start_end_x_y(t_scene *scene)
+{
+	scene->x_start = scene->res.width / (-2.0);
+	scene->x_end = scene->res.width / 2.0;
+	scene->y_start = scene->res.height / 2.0;
+	scene->y_end = scene->res.height / (-2.0);
 }

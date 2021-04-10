@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:52:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:28:32 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/10 14:54:57 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void	read_and_parse_file(char *filename, t_scene **scene)
 	}
 	parser(line, *scene);
 	check_scene(*scene);
+	install_start_end_x_y(*scene);
 	free(line);
 }

@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 21:14:21 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:26:42 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/11 00:46:35 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vector	rotate_normal(t_vector dir, t_vector norm)
 	tmp = vec_dot(dir, norm);
 	if (tmp < 0)
 		return (vec_norm(norm));
-	return (vec_multi(vec_norm(norm), -1));
+	return (vec_multi(vec_norm(norm), -1.0));
 }
 
 t_vector	multi_matrix(t_vector vec, t_matrix mtrx)

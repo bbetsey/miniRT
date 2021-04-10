@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:29:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 17:03:56 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/10 23:22:06 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int			rt_strcmp(char	*s1, char *s2);
 char		**rt_split(char const *s, char *c);
 int			rt_atoi(const char *str);
 float		rt_atof(char *str);
+void		*ft_bzero(void *s, size_t n);
 void		print_scene(t_scene *scene);
 void		check_scene(t_scene *scene);
 void		check_rgb(t_color rgb, t_scene *scene);
@@ -50,5 +51,6 @@ void		print_command(int key_code);
 void		change_dir_operator(t_scene *scene, int key_code);
 int			check_dir(int key_code);
 void		check_resolution(t_scene *scene);
+void		install_start_end_x_y(t_scene *scene);
 
 #endif

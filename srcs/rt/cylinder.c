@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 04:10:39 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:11:34 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/10 23:46:06 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ t_closest	cy_data(t_closest closest, t_cy *cy, t_vector eye, t_vector dir)
 
 void	check_height(float h, t_cy_eq *s)
 {
-	if (s->z1 < 0 || s->z1 > h)
+	if (s->z1 < -0.0000001 || s->z1 > h)
 		s->x1 = INFINITY;
-	if (s->z2 < 0 || s->z2 > h)
+	if (s->z2 < -0.0000001 || s->z2 > h)
 		s->x2 = INFINITY;
 }
 
@@ -71,7 +71,7 @@ t_closest	cy_intersect(void *data, t_vector eye, t_vector dir, t_limit lim)
 	s.c = vec_dot(s.sub, s.sub) - pow(vec_dot(s.sub, cy->n_vec), 2.0)
 		- pow(cy->d / 2.0, 2.0);
 	s.d = pow(s.b, 2.0) - 4 * s.a * s.c;
-	if (s.d < 0)
+	if (s.d < -0.0000001)
 		return (closest);
 	s.x1 = (-s.b - sqrt(s.d)) / (2 * s.a);
 	s.x2 = (-s.b + sqrt(s.d)) / (2 * s.a);

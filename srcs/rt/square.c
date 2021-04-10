@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:49:11 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:41:40 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/11 00:46:01 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ t_closest	sq_intersect(void *data, t_vector eye, t_vector dir, t_limit lim)
 	sq->n_vec = rotate_normal(dir, vec_norm(sq->n_vec));
 	s.a = vec_dot(vec_sub(eye, sq->vec), sq->n_vec);
 	s.b = vec_dot(dir, sq->n_vec);
-	if (fabs(s.b) < 0.00001 || (s.a < 0 && s.b < 0) || (s.a > 0 && s.b > 0))
+	if (fabs(s.b) < 0.00001 || (s.a < -0.00001 && s.b < -0.00001)
+		|| (s.a > 0.00001 && s.b > 0.00001))
 		return (closest);
 	s.x1 = -s.a / s.b;
 	s.vec = vec_sub(vec_sum(vec_multi(dir, s.x1), eye), sq->vec);
