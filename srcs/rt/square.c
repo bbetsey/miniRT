@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:49:11 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 10:34:30 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/12 00:42:00 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ double	sq_closest(t_limit lim, double t, t_closest *closest, t_sq *sq)
 	{
 		closest->color = 1;
 		closest->rgb = sq->rgb;
-		closest->norm = sq->n_vec;
 		closest->length = t;
 		return (t);
 	}
@@ -47,6 +46,7 @@ t_closest	sq_intersect(void *data, t_vector eye, t_vector dir, t_limit lim)
 	if (sq_closest(lim, s.x1, &closest, sq))
 	{
 		closest.intersect = vec_sum(eye, vec_multi(dir, s.x1));
+		closest.norm = rotate_normal(dir, sq->n_vec);
 		return (closest);
 	}
 	return (closest);

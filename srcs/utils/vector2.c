@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 07:04:07 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 16:42:11 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/12 00:43:20 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ t_vector	vec_rotate_y(t_vector vec, int angle)
 {
 	t_vector	res;
 
-	res.x = vec.x * cos(angle * M_PI/180) - vec.z * sin(angle * M_PI/180);
-	res.z = vec.x * sin(angle * M_PI/180) + vec.z * cos(angle * M_PI/180);
+	res.x = vec.x * cos(angle * M_PI / 180) - vec.z * sin(angle * M_PI / 180);
+	res.z = vec.x * sin(angle * M_PI / 180) + vec.z * cos(angle * M_PI / 180);
 	res.y = vec.y;
 	return (res);
 }
@@ -57,8 +57,8 @@ t_vector	vec_rotate_x(t_vector vec, int angle)
 {
 	t_vector	res;
 
-	res.z = vec.z * cos(angle * M_PI/180) - vec.y * sin(angle * M_PI/180);
-	res.y = vec.z * sin(angle * M_PI/180) + vec.y * cos(angle * M_PI/180);
+	res.z = vec.z * cos(angle * M_PI / 180) - vec.y * sin(angle * M_PI / 180);
+	res.y = vec.z * sin(angle * M_PI / 180) + vec.y * cos(angle * M_PI / 180);
 	res.x = vec.x;
 	return (res);
 }

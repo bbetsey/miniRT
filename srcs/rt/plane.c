@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:09:15 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 00:45:14 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/12 00:40:23 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_closest	pl_intersect(void *data, t_vector eye, t_vector dir, t_limit lim)
 		if (pl_closest(lim, t, &closest, plane))
 		{
 			closest.intersect = vec_sum(eye, vec_multi(dir, t));
-			closest.norm = plane->n_vec;
+			closest.norm = rotate_normal(dir, plane->n_vec);
 			return (closest);
 		}
 	}
