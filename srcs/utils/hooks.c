@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:30:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:35:24 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/11 15:24:42 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ int	red_button(t_scene *scene)
 void	operator(t_scene *scene, int key_code)
 {
 	if (key_code == 13)
-		scene->cams->vec.z += 1;
+		scene->cams->vec = vec_sum(scene->cams->vec, scene->cams->n_vec);
 	else if (key_code == 1)
-		scene->cams->vec.z -= 1;
+		scene->cams->vec = vec_sum(scene->cams->vec,
+				vec_multi(scene->cams->n_vec, -1));
 	else if (key_code == 0)
-		scene->cams->vec.x -= 1;
+		scene->cams->vec = vec_sum(scene->cams->vec,
+				vec_norm(vec_cross(scene->cams->n_vec, (t_vector){0, 1, 0})));
 	else if (key_code == 2)
-		scene->cams->vec.x += 1;
+		scene->cams->vec = vec_sum(scene->cams->vec, vec_multi(vec_norm
+					(vec_cross(scene->cams->n_vec, (t_vector){0, 1, 0})), -1));
 	else if (key_code == 15)
 		scene->cams->vec.y += 1;
 	else if (key_code == 3)

@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:29:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/10 23:22:06 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/11 16:40:42 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ void		change_dir_operator(t_scene *scene, int key_code);
 int			check_dir(int key_code);
 void		check_resolution(t_scene *scene);
 void		install_start_end_x_y(t_scene *scene);
+t_vector	vec_rotate_y(t_vector vec, int angle);
+t_vector	vec_rotate_x(t_vector vec, int angle);
 
 #endif
