@@ -1,0 +1,3 @@
+# miniRT
+Mini Ray Tracing
+
