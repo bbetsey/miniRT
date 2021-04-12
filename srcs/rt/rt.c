@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:41 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 00:43:56 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/12 01:26:29 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ void	trace_ray(t_scene *scene)
 	pthread_t	*threads;
 
 	data = malloc(sizeof(t_thr_data) * scene->res.height);
-	data = ft_bzero(data, scene->res.height);
 	threads = malloc(sizeof(pthread_t) * scene->res.height);
+	if (!data || !threads)
+		error_handler("Can't allocate memory for threads or data", scene);
 	init_thread_data(scene, data, threads);
 	wait_threads(threads, scene->res.height);
+	anti_aliasing(data, scene->res.height, scene->res.width);
 	pixel_put(data, scene);
 	free(threads);
 	free(data);

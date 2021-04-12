@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:14 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 00:37:53 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/12 01:25:49 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,19 @@ typedef struct s_thr_data
 	t_scene		*scene;
 }				t_thr_data;
 
+typedef struct s_aa_matrix
+{
+	int		a1;
+	int		a2;
+	int		a3;
+	int		b1;
+	int		b2;
+	int		b3;
+	int		c1;
+	int		c2;
+	int		c3;
+}			t_aa_matrix;
+
 void			trace_ray(t_scene *scene);
 int				intersect(t_scene *scene, t_vector ray);
 void			install_cams(t_scene *scene);
@@ -107,5 +120,6 @@ void			init_thread_data(t_scene *scene, t_thr_data *data,
 					pthread_t *threads);
 void			*run_thread(void *thread_data);
 void			wait_threads(pthread_t *threads, int height);
+void			anti_aliasing(t_thr_data *data, int height, int width);
 
 #endif
