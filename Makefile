@@ -6,7 +6,7 @@
 #    By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/13 21:34:20 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/13 22:05:17 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC			=	main.c\
 				utils/vector2.c\
 				utils/hooks.c\
 				utils/bmp.c\
+				utils/check_res.c\
 				\
 				parser/parser.c\
 				parser/resolution.c\
@@ -68,14 +69,7 @@ all		:		${NAME}
 
 ${NAME}	:		${OBJS}
 				@make -C mlx/
-				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res.c
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} check_res.o ${OBJS} -o ${NAME} -pthread
-				@echo && echo "\033[1m\033[32m» Assembled ⚑\033[0m" && echo
-
-macos	:		${OBJS}
-				@make -C mlx/
-				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res_lim.c
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} check_res_lim.o -o ${NAME} -pthread
+				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} -o ${NAME} -pthread
 				@echo && echo "\033[1m\033[32m» Assembled ⚑\033[0m" && echo
 
 %.o		: 		%.c
@@ -95,7 +89,3 @@ re		:		fclean all
 bonus	:		all
 
 .PHONY	:		all, clean, fclean, re, bonus
-
-leaks	:		re
-				@valgrind ./miniRT example.rt --leak-check=full
-				@rm -rf ${OBJS} objs_dir ${NAME} miniRT.dSYM
