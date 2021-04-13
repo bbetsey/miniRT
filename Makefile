@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+         #
+#    By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/13 22:05:17 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/13 23:26:50 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,8 @@ SRC			=	main.c\
 				parser/square.c\
 				parser/triangle.c\
 				\
-				gnl/get_next_line.c\
-				gnl/get_next_line_utils.c\
+				gnl/gnl.c\
+				gnl/gnl_utils.c\
 
 SRCS		=	${addprefix ${DIR_SRCS}, ${SRC}}
 OBJS		=	${SRCS:.c=.o}

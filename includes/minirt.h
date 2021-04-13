@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:24:10 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/13 21:33:35 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 23:26:05 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "parse.h"
 # include "utils.h"
 # include "rt.h"
-# include "get_next_line.h"
+# include "gnl.h"
 
 # define FAILURE	1
 # define SUCCESS	0
