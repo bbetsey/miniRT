@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:29:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 16:40:42 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:26:39 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void		print_plane(t_object *plane);
 int			red_button(t_scene *scene);
 void		exit_minirt(t_scene *scene);
 void		save_image(t_scene *scene, char *filename);
-void		check_resolution(t_scene *scene);
 void		install_window(t_scene *scene);
 void		create_image(t_scene *scene);
 void		print_command(int key_code);

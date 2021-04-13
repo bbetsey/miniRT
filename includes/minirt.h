@@ -22,7 +22,6 @@
 # include <pthread.h>
 
 # include "mlx.h"
-# include "mlx_mms.h"
 # include "vector.h"
 # include "parse.h"
 # include "utils.h"

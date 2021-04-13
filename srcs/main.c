@@ -53,7 +53,6 @@ int	main(int argc, char **argv)
 	}
 	read_and_parse_file(argv[1], &scene);
 	scene->first_cam = scene->cams;
-	check_resolution(scene);
 	start_ray_tracing(scene);
 	free_scene(scene);
 	return (0);

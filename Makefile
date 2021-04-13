@@ -14,7 +14,6 @@ NAME		=	miniRT
 DIR_HEADERS	=	includes/
 DIR_SRCS	=	srcs/
 MLX			=	mlx/libmlx.a
-MLX_MMS		=	libmlx.dylib -framework Metal -framework AppKit
 MLX_FLAGS	=	-Lmlx -lmlx -framework OpenGL -framework AppKit
 
 SRC			=	main.c\
@@ -68,24 +67,21 @@ all		:		${NAME}
 
 ${NAME}	:		${OBJS}
 				@make -C mlx/
-				@make -C mlx_mms/
-				@mv mlx_mms/libmlx.dylib libmlx.dylib
 				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res.c
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} ${MLX_MMS} -I ${DIR_HEADERS} ${MLX} check_res.o ${OBJS} -o ${NAME} -lpthread
-				@echo && echo "\033[1m\033[32mAssembled ⚑\033[0m"
+				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} check_res.o ${OBJS} -o ${NAME} -pthread
+				@echo && echo "\033[1m\033[32m» Assembled ⚑\033[0m" && echo
 
 macos	:		${OBJS}
 				@make -C mlx/
 				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c srcs/utils/check_res_lim.c
-				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} check_res_lim.o -o ${NAME} -lpthread
-				@echo && echo "\033[1m\033[32mAssembled ⚑\033[0m"
+				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} check_res_lim.o -o ${NAME} -pthread
+				@echo && echo "\033[1m\033[32m» Assembled ⚑\033[0m" && echo
 
 %.o		: 		%.c
 				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c $< -o $@
 
 norm	:
-				@norminette $(DIR_SRCS)
-				@norminette includes/get_next_line.h includes/minirt.h includes/parse.h includes/utils.h includes/vector.h includes/rt.h
+				@norminette $(DIR_SRCS) includes/get_next_line.h includes/minirt.h includes/parse.h includes/utils.h includes/vector.h includes/rt.h
 
 clean	:
 				@rm -rf ${OBJS} && rm -f check_res.o check_res_lim.o && rm -f img.bmp

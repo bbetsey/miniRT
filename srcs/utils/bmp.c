@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bmp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 20:38:57 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:39:12 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:27:06 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,12 @@ void	save_image(t_scene *scene, char *filename)
 {
 	read_and_parse_file(filename, &scene);
 	scene->first_cam = scene->cams;
-	check_resolution(scene);
 	scene->mlx = mlx_init();
 	if (!scene->mlx)
 		error_handler("can't init mlx", scene);
 	install_window(scene);
 	install_cams(scene);
 	draw_image(scene, 1);
-	printf(BOLDGREEN "Success! Created image: image.bmp" RESET);
+	printf(BOLDGREEN "Success! Created image: image.bmp\n" RESET);
 	exit_minirt(scene);
 }

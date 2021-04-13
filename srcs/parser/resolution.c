@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resolution.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 21:07:40 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:19:31 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:27:13 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	parse_resolution(char *line, t_scene *scene)
 	if (scene->res.height == 0)
 		error_handler("resolution height must be more then zero", scene);
 	scene->res.check = 1;
+	check_resolution(scene);
 	free_array(arr);
 }

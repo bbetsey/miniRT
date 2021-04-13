@@ -42,7 +42,8 @@ void	pixel_put(t_thr_data *data, t_scene *scene)
 			my_mlx_pixel_put(&scene->img, x, y, data[y].colors[x]);
 			x++;
 		}
-		free(data[y].colors);
+		if (data[y].colors)
+			free(data[y].colors);
 		y++;
 	}
 }
@@ -56,12 +57,14 @@ void	trace_ray(t_scene *scene)
 	threads = malloc(sizeof(pthread_t) * scene->res.height);
 	if (!data || !threads)
 		error_handler("Can't allocate memory for threads or data", scene);
+	data = ft_bzero(data, scene->res.height);
 	init_thread_data(scene, data, threads);
 	wait_threads(threads, scene->res.height);
-	anti_aliasing(data, scene->res.height, scene->res.width);
 	pixel_put(data, scene);
-	free(threads);
-	free(data);
+	if (threads)
+		free(threads);
+	if (data)
+		free(data);
 }
 
 void	draw_image(t_scene *scene, int is_save)

@@ -32,8 +32,6 @@ void	check_scene(t_scene *scene)
 		error_handler("No ambient or resolution", scene);
 	check_rgb(scene->amb.rgb, scene);
 	light = scene->light;
-	if (!light)
-		error_handler("no light!", scene);
 	while (light)
 	{
 		check_rgb(light->rgb, scene);

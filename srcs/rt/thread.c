@@ -12,44 +12,6 @@
 
 #include "minirt.h"
 
-int	check_color_matrix(t_aa_matrix m)
-{
-	int		average;
-
-	average = (m.a1 + m.a2 + m.a3 + m.b1 + m.b2 + m.b3 + m.c1 + m.c2 + m.c3) / 9;
-	if (abs(average - m.b2) > 100000)
-		return (average);
-	return (m.b2);
-}
-
-void	anti_aliasing(t_thr_data *data, int height, int width)
-{
-	t_aa_matrix		matrix;
-	int				i;
-	int				j;
-
-	j = 1;
-	while (j < (height - 1))
-	{
-		i = 1;
-		while (i < (width - 1))
-		{
-			matrix.a1 = data[j - 1].colors[i - 1];
-			matrix.a2 = data[j - 1].colors[i];
-			matrix.a3 = data[j - 1].colors[i + 1];
-			matrix.b1 = data[j].colors[i - 1];
-			matrix.b2 = data[j].colors[i];
-			matrix.b3 = data[j].colors[i + 1];
-			matrix.c1 = data[j + 1].colors[i - 1];
-			matrix.c2 = data[j + 1].colors[i];
-			matrix.c3 = data[j + 1].colors[i + 1];
-			data[j].colors[i] = check_color_matrix(matrix);
-			i++;
-		}
-		j++;
-	}
-}
-
 void	wait_threads(pthread_t *threads, int height)
 {
 	int		i;
@@ -85,7 +47,7 @@ void	init_thread_data(t_scene *scene, t_thr_data *data, pthread_t *threads)
 
 	height = 0;
 	y = scene->y_start;
-	while (y > scene->y_end)
+	while (height < scene->res.height)
 	{
 		data[height].j = height;
 		data[height].i = 0;
@@ -95,6 +57,7 @@ void	init_thread_data(t_scene *scene, t_thr_data *data, pthread_t *threads)
 		data[height].colors = malloc(sizeof(int) * scene->res.width);
 		if (!data[height].colors)
 			error_handler("Can't allocate memory for colors", scene);
+		data[height].colors = ft_bzero(data[height].colors, scene->res.width);
 		data[height].scene = scene;
 		pthread_create(&(threads[height]), NULL, run_thread, &(data[height]));
 		height++;
