@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:32:30 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/12 01:31:33 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:38:10 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_thread_data(t_scene *scene, t_thr_data *data, pthread_t *threads)
 		data[height].x_start = scene->x_start;
 		data[height].x_end = scene->x_end;
 		data[height].y = y;
-		data[height].colors = malloc(sizeof(int) * scene->res.width);
+		data[height].colors = malloc(sizeof(t_color) * scene->res.width);
 		if (!data[height].colors)
 			error_handler("Can't allocate memory for colors", scene);
 		data[height].colors = ft_bzero(data[height].colors, scene->res.width);

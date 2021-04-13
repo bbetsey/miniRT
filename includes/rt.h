@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:14 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/12 01:25:49 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 21:34:31 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,25 +78,32 @@ typedef struct s_thr_data
 	double		y;
 	double		x_start;
 	double		x_end;
-	int			*colors;
+	t_color		*colors;
 	t_scene		*scene;
 }				t_thr_data;
 
 typedef struct s_aa_matrix
 {
-	int		a1;
-	int		a2;
-	int		a3;
-	int		b1;
-	int		b2;
-	int		b3;
-	int		c1;
-	int		c2;
-	int		c3;
-}			t_aa_matrix;
+	t_color		a1;
+	t_color		a2;
+	t_color		a3;
+	t_color		b1;
+	t_color		b2;
+	t_color		b3;
+	t_color		c1;
+	t_color		c2;
+	t_color		c3;
+}				t_aa_matrix;
+
+typedef struct s_aa_thr_data
+{
+	int			width;
+	int			j;
+	t_thr_data	*data;
+}				t_aa_thr_data;
 
 void			trace_ray(t_scene *scene);
-int				intersect(t_scene *scene, t_vector ray);
+t_color			intersect(t_scene *scene, t_vector ray);
 void			install_cams(t_scene *scene);
 t_closest		sp_intersect(void *data, t_vector eye, t_vector dir,
 					t_limit lim);
@@ -121,5 +128,6 @@ void			init_thread_data(t_scene *scene, t_thr_data *data,
 void			*run_thread(void *thread_data);
 void			wait_threads(pthread_t *threads, int height);
 void			anti_aliasing(t_thr_data *data, int height, int width);
+void			wait_threads(pthread_t *threads, int height);
 
 #endif

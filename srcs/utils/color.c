@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 22:10:40 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:40:21 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:58:18 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,13 @@ t_color	color_multi(t_color c, double i)
 	c.r *= i;
 	c.g *= i;
 	c.b *= i;
+	return (c);
+}
+
+t_color	color_div(t_color c, double i)
+{
+	c.r /= i;
+	c.g /= i;
+	c.b /= i;
 	return (c);
 }

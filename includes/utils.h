@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:29:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/13 18:26:39 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:58:51 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_vector	rotate_normal(t_vector dir, t_vector norm);
 t_color		color_sum(t_color c1, t_color c2);
 t_color		color_mix(t_color c1, t_color c2);
 t_color		color_multi(t_color c, double i);
+t_color		color_div(t_color c, double i);
 t_vector	make_ray(double x, double y, t_cam *cam);
 void		next_camera(t_scene *scene);
 void		operator(t_scene *scene, int key_code);

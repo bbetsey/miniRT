@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:17:54 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 00:26:13 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:37:38 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_closest	find_closest(t_closest solution, t_closest closest)
 	return (closest);
 }
 
-int	intersect(t_scene *scene, t_vector ray)
+t_color	intersect(t_scene *scene, t_vector ray)
 {
 	t_object	*obj;
 	t_closest	closest;
@@ -39,6 +39,7 @@ int	intersect(t_scene *scene, t_vector ray)
 	obj = scene->objs;
 	closest.color = BACKCOLOR;
 	closest.length = INFINITY;
+	closest.rgb = (t_color){0, 0, 0};
 	lim.min = 1;
 	lim.max = INFINITY;
 	while (obj)
@@ -51,7 +52,7 @@ int	intersect(t_scene *scene, t_vector ray)
 	if (closest.color != BACKCOLOR)
 	{
 		tmp = compute_color(closest, scene, ray);
-		closest.color = create_trgb(0, tmp.r, tmp.g, tmp.b);
+		closest.rgb = tmp;
 	}
-	return (closest.color);
+	return (closest.rgb);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+         #
+#    By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/11 00:35:29 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/13 21:34:20 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC			=	main.c\
 				rt/cylinder.c\
 				rt/light.c\
 				rt/thread.c\
+				rt/anti_aliasing.c\
 				\
 				utils/atoi.c\
 				utils/atof.c\

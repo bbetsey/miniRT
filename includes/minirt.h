@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:24:10 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 14:43:18 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 21:33:35 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define BACK_B		39
 # define BACKCOLOR	0
 # define SPECULAR	600
+# define DIFF		8
+# define PIXEL_DIV	4
 
 # define RESET			"\033[0m"
 # define BLACK			"\033[30m"

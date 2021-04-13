@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:41 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/12 01:26:29 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/13 21:34:10 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void	install_cams(t_scene *scene)
 
 void	pixel_put(t_thr_data *data, t_scene *scene)
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
+	int			color;
 
 	y = 0;
 	while (y < scene->res.height)
@@ -39,7 +40,9 @@ void	pixel_put(t_thr_data *data, t_scene *scene)
 		x = 0;
 		while (x < scene->res.width)
 		{
-			my_mlx_pixel_put(&scene->img, x, y, data[y].colors[x]);
+			color = create_trgb(0, data[y].colors[x].r,
+					data[y].colors[x].g, data[y].colors[x].b);
+			my_mlx_pixel_put(&scene->img, x, y, color);
 			x++;
 		}
 		if (data[y].colors)
@@ -60,6 +63,7 @@ void	trace_ray(t_scene *scene)
 	data = ft_bzero(data, scene->res.height);
 	init_thread_data(scene, data, threads);
 	wait_threads(threads, scene->res.height);
+	anti_aliasing(data, scene->res.width, scene->res.height);
 	pixel_put(data, scene);
 	if (threads)
 		free(threads);
