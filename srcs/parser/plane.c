@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:53:24 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:29:21 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:01:58 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_object	*plane_init(t_object *plane, t_scene *scene)
 	return (plane);
 }
 
-t_pl	*fill_vector_pl(t_pl *data, char **arr, t_scene *scene)
+void	fill_vector_pl(t_pl *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -42,10 +42,9 @@ t_pl	*fill_vector_pl(t_pl *data, char **arr, t_scene *scene)
 	data->n_vec.z = rt_atof(coor[2]);
 	free_array(coor);
 	check_normal(data->n_vec, scene);
-	return (data);
 }
 
-t_pl	*fill_color_pl(t_pl *data, char **arr, t_scene *scene)
+void	fill_color_pl(t_pl *data, char **arr, t_scene *scene)
 {
 	char		**coor;
 
@@ -55,9 +54,10 @@ t_pl	*fill_color_pl(t_pl *data, char **arr, t_scene *scene)
 	data->rgb.r = rt_atoi(coor[0]);
 	data->rgb.g = rt_atoi(coor[1]);
 	data->rgb.b = rt_atoi(coor[2]);
+	if (arr[3])
+		data->spec = rt_atoi(arr[3]);
 	free_array(coor);
 	check_rgb(data->rgb, scene);
-	return (data);
 }
 
 t_object	*add_plane(char *line, t_scene *scene)
@@ -73,10 +73,10 @@ t_object	*add_plane(char *line, t_scene *scene)
 	if (!data)
 		error_handler("Can't allocate memory for plane data", scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) != 3)
+	if (arr_len(arr) > 4 || arr_len(arr) < 3)
 		error_handler("invalid number of arguments for plane", scene);
-	data = fill_vector_pl(data, arr, scene);
-	data = fill_color_pl(data, arr, scene);
+	fill_vector_pl(data, arr, scene);
+	fill_color_pl(data, arr, scene);
 	free_array(arr);
 	plane->data = data;
 	plane->equation = &pl_intersect;

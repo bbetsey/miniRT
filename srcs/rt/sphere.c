@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 15:45:02 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/10 16:38:49 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:08:07 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	sp_fill_data(t_vector eye, t_vector dir, t_closest *rs, t_sp *sp)
 	rs->intersect = vec_sum(eye, vec_multi(dir, rs->length));
 	rs->norm = rotate_normal(dir, vec_norm(vec_sub(rs->intersect, sp->vec)));
 	rs->color = 1;
+	rs->spec = sp->spec;
 }
 
 t_closest	sp_intersect(void *data, t_vector eye, t_vector dir, t_limit lim)

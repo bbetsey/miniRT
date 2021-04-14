@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:17:54 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/13 18:37:38 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/14 23:55:13 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_closest	find_closest(t_closest solution, t_closest closest)
 			closest.intersect = solution.intersect;
 			closest.norm = solution.norm;
 			closest.color = solution.color;
+			closest.spec = solution.spec;
 		}
 	}
 	return (closest);

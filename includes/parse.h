@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:33:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/10 14:40:35 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/14 23:59:55 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_sp
 	t_vector		vec;
 	float			d;
 	t_color			rgb;
+	int				spec;
 }					t_sp;
 
 typedef struct s_pl
@@ -77,6 +78,7 @@ typedef struct s_pl
 	t_vector		vec;
 	t_vector		n_vec;
 	t_color			rgb;
+	int				spec;
 }					t_pl;
 
 typedef struct s_cy
@@ -86,6 +88,7 @@ typedef struct s_cy
 	float			d;
 	float			h;
 	t_color			rgb;
+	int				spec;
 }					t_cy;
 
 typedef struct s_sq
@@ -94,6 +97,7 @@ typedef struct s_sq
 	t_vector		n_vec;
 	float			side;
 	t_color			rgb;
+	int				spec;
 }					t_sq;
 
 typedef struct s_tr
@@ -105,6 +109,7 @@ typedef struct s_tr
 	t_vector		norm;
 	t_pl			pl;
 	double			d;
+	int				spec;
 }					t_tr;
 
 typedef struct s_closest
@@ -114,6 +119,7 @@ typedef struct s_closest
 	t_vector		intersect;
 	t_vector		norm;
 	t_color			rgb;
+	int				spec;
 }					t_closest;
 
 typedef struct s_limit

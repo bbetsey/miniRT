@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 04:10:39 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/10 23:46:06 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:08:26 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_closest	cy_data(t_closest closest, t_cy *cy, t_vector eye, t_vector dir)
 	closest.norm = rotate_normal(dir, closest.norm);
 	closest.rgb = cy->rgb;
 	closest.color = 1;
+	closest.spec = cy->spec;
 	return (closest);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:25:57 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:25:47 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:04:49 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ t_sp	*fill_color_sp(t_sp *data, char **arr, t_scene *scene)
 	data->rgb.r = rt_atoi(coor[0]);
 	data->rgb.g = rt_atoi(coor[1]);
 	data->rgb.b = rt_atoi(coor[2]);
+	if (arr[3])
+		data->spec = rt_atoi(arr[3]);
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 	return (data);
@@ -65,7 +67,7 @@ t_object	*add_sphere(char *line, t_scene *scene)
 	if (!data)
 		error_handler("Can't allocate memory for sphere data", scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) != 3)
+	if (arr_len(arr) < 3 || arr_len(arr) > 4)
 		error_handler("invalid number of arguments for sphere", scene);
 	data = fill_vector_sp(data, arr, scene);
 	data->d = rt_atof(arr[1]);

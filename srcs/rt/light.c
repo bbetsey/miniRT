@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:24:11 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/11 00:31:09 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:24:29 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,23 @@ float	light_point(t_vector n, t_vector l, float ratio)
 	return (0);
 }
 
-float	make_specular(t_vector n, t_vector l, t_vector ray, float rat)
+float	make_specular(t_specular spec)
 {
 	float		dot;
 	t_vector	r;
 	t_vector	v;
 
-	r = vec_sub(vec_multi(n, 2 * vec_dot(n, l)), l);
-	v = vec_multi(ray, -1);
+	r = vec_sub(vec_multi(spec.n, 2 * vec_dot(spec.n, spec.l)), spec.l);
+	v = vec_multi(spec.ray, -1);
 	dot = vec_dot(r, v);
 	if (dot > 0.0001)
-		return (rat * pow(vec_dot(r, v) / (vec_len(r) * vec_len(v)), SPECULAR));
+		return (spec.rat * pow(vec_dot(r, v) / (vec_len(r) * vec_len(v)),
+				spec.spec));
 	return (0);
 }
 
 float	compute_lightning(t_scene *scene, t_light *light,
-t_vector intersect, t_tmp tmp)
+t_closest solution, t_tmp tmp)
 {
 	float		i;
 	t_vector	l;
@@ -45,20 +46,21 @@ t_vector intersect, t_tmp tmp)
 	t_closest	closest;
 	t_limit		lim;
 
-	l = vec_sub(light->vec, intersect);
+	l = vec_sub(light->vec, solution.intersect);
 	obj = scene->objs;
 	lim.min = 0.0001;
 	lim.max = 1;
 	i = 0.0;
 	while (obj)
 	{
-		closest = obj->equation(obj->data, intersect, l, lim);
+		closest = obj->equation(obj->data, solution.intersect, l, lim);
 		if (closest.length)
 			return (i);
 		obj = obj->next;
 	}
 	i += light_point(tmp.n, l, light->ratio);
-	i += make_specular(tmp.n, l, tmp.ray, light->ratio);
+	i += make_specular((t_specular){tmp.n, l, tmp.ray, light->ratio,
+			solution.spec});
 	return (i);
 }
 
@@ -72,7 +74,7 @@ t_color	compute_color(t_closest closest, t_scene *scene, t_vector ray)
 	ret = color_mix(closest.rgb, color_multi(scene->amb.rgb, scene->amb.ratio));
 	while (light)
 	{
-		i = compute_lightning(scene, light, closest.intersect,
+		i = compute_lightning(scene, light, closest,
 				(t_tmp){ray, closest.norm});
 		ret = color_sum(ret, color_mix(closest.rgb,
 					color_multi(light->rgb, i)));

@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:56:30 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 15:41:18 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:17:29 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	print_plane(t_object *plane)
 	t_pl		*data;
 
 	data = plane->data;
-	printf("Plane:\t\t[%.1f %.1f %.1f] [%.1f %.1f %.1f] [%d %d %d]\n",
+	printf("Plane:\t\t[%.1f %.1f %.1f] [%.1f %.1f %.1f] [%d %d %d] [%d]\n",
 		data->vec.x, data->vec.y, data->vec.z, data->n_vec.x,
-		data->n_vec.y, data->n_vec.z, data->rgb.r, data->rgb.g, data->rgb.b);
+		data->n_vec.y, data->n_vec.z, data->rgb.r, data->rgb.g, data->rgb.b,
+		data->spec);
 }
 
 void	print_sphere(t_object *sphere)
@@ -27,9 +28,9 @@ void	print_sphere(t_object *sphere)
 	t_sp		*data;
 
 	data = sphere->data;
-	printf("Sphere:\t\t[%.1f %.1f %.1f] [%.1f] [%d %d %d]\n",
+	printf("Sphere:\t\t[%.1f %.1f %.1f] [%.1f] [%d %d %d] [%d]\n",
 		data->vec.x, data->vec.y, data->vec.z, data->d,
-		data->rgb.r, data->rgb.g, data->rgb.b);
+		data->rgb.r, data->rgb.g, data->rgb.b, data->spec);
 }
 
 void	print_cylinder(t_object *cylinder)
@@ -38,9 +39,10 @@ void	print_cylinder(t_object *cylinder)
 
 	data = cylinder->data;
 	printf("Cylinder:\t[%.1f %.1f %.1f] [%.1f %.1f %.1f] [%.1f] "
-		"[%.1f] [%d %d %d]\n",
+		"[%.1f] [%d %d %d] [%d]\n",
 		data->vec.x, data->vec.y, data->vec.z, data->n_vec.x, data->n_vec.y,
-		data->n_vec.z, data->d, data->h, data->rgb.r, data->rgb.g, data->rgb.b);
+		data->n_vec.z, data->d, data->h, data->rgb.r, data->rgb.g, data->rgb.b,
+		data->spec);
 }
 
 void	print_triangle(t_object *triangle)

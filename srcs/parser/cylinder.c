@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:09:47 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:24:43 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:03:19 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ t_cy	*fill_color_cy(t_cy *data, char **arr, t_scene *scene)
 	data->rgb.r = rt_atoi(coor[0]);
 	data->rgb.g = rt_atoi(coor[1]);
 	data->rgb.b = rt_atoi(coor[2]);
+	if (arr[5])
+		data->spec = rt_atoi(arr[5]);
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 	return (data);
@@ -70,7 +72,7 @@ t_object	*add_cylinder(char *line, t_scene *scene)
 	cylinder = cylinder_init(cylinder, scene);
 	ft_check_line(line, scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) != 5)
+	if (arr_len(arr) < 5 || arr_len(arr) > 6)
 		error_handler("invalid number of arguments for cylinder", scene);
 	data = malloc(sizeof(t_cy));
 	if (!data)

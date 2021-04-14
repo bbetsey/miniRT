@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:09:15 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/12 00:40:23 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:08:45 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ double	pl_closest(t_limit lim, float t, t_closest *closest, t_pl *pl)
 		closest->length = t;
 		closest->rgb = pl->rgb;
 		closest->color = 1;
+		closest->spec = pl->spec;
 		return (t);
 	}
 	return (0);

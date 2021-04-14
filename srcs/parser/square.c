@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:31:39 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 16:19:15 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:07:07 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ t_sq	*fill_color_sq(t_sq *data, char **arr, t_scene *scene)
 	data->rgb.r = rt_atoi(coor[0]);
 	data->rgb.g = rt_atoi(coor[1]);
 	data->rgb.b = rt_atoi(coor[2]);
+	if (arr[4])
+		data->spec = rt_atoi(arr[4]);
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 	return (data);
@@ -73,7 +75,7 @@ t_object	*add_square(char *line, t_scene *scene)
 	if (!data)
 		error_handler("Can't allocate memory for square data", scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) != 4)
+	if (arr_len(arr) < 5 || arr_len(arr) > 5)
 		error_handler("invalid number of arguments for square", scene);
 	data = fill_vector_sq(data, arr, scene);
 	data->side = rt_atof(arr[2]);

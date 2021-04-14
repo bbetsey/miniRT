@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:14 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/13 21:34:31 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:23:00 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ typedef struct s_cy_eq
 	double		z2;
 }					t_cy_eq;
 
+typedef struct s_specular
+{
+	t_vector	n;
+	t_vector	l;
+	t_vector	ray;
+	float		rat;
+	int			spec;
+}				t_specular;
+
 typedef struct s_matrix
 {
 	t_vector	up;
@@ -116,11 +125,10 @@ t_closest		sq_intersect(void *data, t_vector eye, t_vector dir,
 t_closest		cy_intersect(void *data, t_vector eye, t_vector dir,
 					t_limit lim);
 float			lightning(t_scene *scene);
-float			make_specular(t_vector n, t_vector l, t_vector ray,
-					float ratio);
+float			make_specular(t_specular spec);
 float			light_point(t_vector n, t_vector l, float ratio);
 float			compute_lightning(t_scene *scene, t_light *light,
-					t_vector intersect, t_tmp tmp);
+					t_closest solution, t_tmp tmp);
 t_color			compute_color(t_closest closest, t_scene *scene, t_vector ray);
 void			draw_image(t_scene *scene, int is_save);
 void			init_thread_data(t_scene *scene, t_thr_data *data,

@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:23:47 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/09 17:00:10 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:23:40 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 		error_handler("Unknown argument", scene);
 	}
 	read_and_parse_file(argv[1], &scene);
+	// print_scene(scene);
 	scene->first_cam = scene->cams;
 	start_ray_tracing(scene);
 	free_scene(scene);
