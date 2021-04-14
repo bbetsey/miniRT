@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:09:47 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:03:19 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:31:55 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_cy	*fill_color_cy(t_cy *data, char **arr, t_scene *scene)
 	data->rgb.b = rt_atoi(coor[2]);
 	if (arr[5])
 		data->spec = rt_atoi(arr[5]);
+	else
+		data->spec = SPECULAR;
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 	return (data);

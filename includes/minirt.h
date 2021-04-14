@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:24:10 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:26:44 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 00:32:30 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define BACK_G		22
 # define BACK_B		39
 # define BACKCOLOR	0
-# define SPECULAR	5
+# define SPECULAR	300
 # define DIFF		6
 # define PIXEL_DIV	4
 
