@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:14 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 15:19:51 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 20:53:51 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,14 @@ typedef struct s_aa_thr_data
 	t_thr_data	*data;
 }				t_aa_thr_data;
 
+typedef struct s_ray
+{
+	t_vector	eye;
+	t_vector	dir;
+}				t_ray;
+
 void			trace_ray(t_scene *scene);
-t_color			intersect(t_scene *scene, t_vector ray, t_limit lim,
+t_color			intersect(t_scene *scene, t_ray ray, t_limit lim,
 					int recursive);
 void			install_cams(t_scene *scene);
 t_closest		sp_intersect(void *data, t_vector eye, t_vector dir,

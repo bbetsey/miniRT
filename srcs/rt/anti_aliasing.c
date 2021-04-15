@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 18:34:00 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 15:28:16 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 20:50:32 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_color	additional_ray_tracing(t_scene *scene, int i, int j)
 {
 	double		x;
 	double		y;
-	t_vector	ray;
+	t_vector	dir;
 	t_color		color;
 
 	y = scene->y_start - j;
@@ -28,11 +28,12 @@ t_color	additional_ray_tracing(t_scene *scene, int i, int j)
 		i = 0;
 		while (i < PIXEL_DIV)
 		{
-			ray = make_ray(x + ((1.0 / (2.0 * (double)PIXEL_DIV))
+			dir = make_ray(x + ((1.0 / (2.0 * (double)PIXEL_DIV))
 						+ ((double)i / (double)PIXEL_DIV)),
 					y - ((1.0 / (2.0 * (double)PIXEL_DIV))
 						+ ((double)j / (double)PIXEL_DIV)), scene->cams);
-			color = color_sum(color, intersect(scene, ray, (t_limit){1, INFINITY}, RECURSIVE));
+			color = color_sum(color, intersect(scene, (t_ray){scene->cams->vec,
+						dir}, (t_limit){1, INFINITY}, RECURSIVE));
 			i++;
 		}
 		j++;
