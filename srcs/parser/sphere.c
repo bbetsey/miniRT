@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:25:57 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:31:35 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:53:59 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ t_sp	*fill_color_sp(t_sp *data, char **arr, t_scene *scene)
 		data->spec = rt_atoi(arr[3]);
 	else
 		data->spec = SPECULAR;
+	if (arr[3] && arr[4])
+		data->ref = rt_atof(arr[4]);
+	else
+		data->ref = 0;
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 	return (data);
@@ -69,7 +73,8 @@ t_object	*add_sphere(char *line, t_scene *scene)
 	if (!data)
 		error_handler("Can't allocate memory for sphere data", scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) < 3 || arr_len(arr) > 4)
+	printf("Arr Len: %d\n", arr_len(arr));
+	if (arr_len(arr) < 3 || arr_len(arr) > 5)
 		error_handler("invalid number of arguments for sphere", scene);
 	data = fill_vector_sp(data, arr, scene);
 	data->d = rt_atof(arr[1]);

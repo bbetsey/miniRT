@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:09:47 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:31:55 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:53:37 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ t_cy	*fill_color_cy(t_cy *data, char **arr, t_scene *scene)
 		data->spec = rt_atoi(arr[5]);
 	else
 		data->spec = SPECULAR;
+	if (arr[5] && arr[6])
+		data->ref = rt_atof(arr[6]);
+	else
+		data->ref = 0;
+	printf("Check\n");
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 	return (data);
@@ -74,7 +79,8 @@ t_object	*add_cylinder(char *line, t_scene *scene)
 	cylinder = cylinder_init(cylinder, scene);
 	ft_check_line(line, scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) < 5 || arr_len(arr) > 6)
+	printf("Arr Len: %d\n", arr_len(arr));
+	if (arr_len(arr) < 5 || arr_len(arr) > 7)
 		error_handler("invalid number of arguments for cylinder", scene);
 	data = malloc(sizeof(t_cy));
 	if (!data)

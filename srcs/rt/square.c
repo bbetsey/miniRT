@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:49:11 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/12 00:42:00 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:58:14 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ double	sq_closest(t_limit lim, double t, t_closest *closest, t_sq *sq)
 		closest->color = 1;
 		closest->rgb = sq->rgb;
 		closest->length = t;
+		closest->spec = sq->spec;
+		closest->ref = sq->ref;
 		return (t);
 	}
 	return (0);

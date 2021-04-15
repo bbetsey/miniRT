@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:09:15 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:08:45 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:57:09 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ double	pl_closest(t_limit lim, float t, t_closest *closest, t_pl *pl)
 		closest->rgb = pl->rgb;
 		closest->color = 1;
 		closest->spec = pl->spec;
+		closest->ref = pl->ref;
 		return (t);
 	}
 	return (0);

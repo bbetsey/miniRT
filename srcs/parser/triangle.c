@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   triangle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:40:58 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 10:02:39 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:54:20 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ t_tr	*fill_color_tr(t_tr *data, char **arr, t_scene *scene)
 		data->spec = rt_atoi(arr[4]);
 	else
 		data->spec = SPECULAR;
+	if (arr[4] && arr[5])
+		data->ref = rt_atof(arr[5]);
+	else
+		data->ref = 0;
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 	return (data);
@@ -83,7 +87,7 @@ t_object	*add_triangle(char *line, t_scene *scene)
 	if (!data)
 		error_handler("Can't allocate memory for triangle data", scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) < 4 || arr_len(arr) > 5)
+	if (arr_len(arr) < 4 || arr_len(arr) > 6)
 		error_handler("invalid number of arguments for triangle", scene);
 	data = fill_vector_tr(data, arr, scene);
 	data = fill_color_tr(data, arr, scene);

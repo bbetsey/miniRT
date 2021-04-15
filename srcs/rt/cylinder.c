@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 04:10:39 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:08:26 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:56:55 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_closest	cy_data(t_closest closest, t_cy *cy, t_vector eye, t_vector dir)
 	closest.rgb = cy->rgb;
 	closest.color = 1;
 	closest.spec = cy->spec;
+	closest.ref = cy->ref;
 	return (closest);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:33:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/14 23:59:55 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:39:10 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_sp
 	float			d;
 	t_color			rgb;
 	int				spec;
+	float			ref;
 }					t_sp;
 
 typedef struct s_pl
@@ -79,6 +80,7 @@ typedef struct s_pl
 	t_vector		n_vec;
 	t_color			rgb;
 	int				spec;
+	float			ref;
 }					t_pl;
 
 typedef struct s_cy
@@ -89,6 +91,7 @@ typedef struct s_cy
 	float			h;
 	t_color			rgb;
 	int				spec;
+	float			ref;
 }					t_cy;
 
 typedef struct s_sq
@@ -98,6 +101,7 @@ typedef struct s_sq
 	float			side;
 	t_color			rgb;
 	int				spec;
+	float			ref;
 }					t_sq;
 
 typedef struct s_tr
@@ -110,6 +114,7 @@ typedef struct s_tr
 	t_pl			pl;
 	double			d;
 	int				spec;
+	float			ref;
 }					t_tr;
 
 typedef struct s_closest
@@ -120,6 +125,7 @@ typedef struct s_closest
 	t_vector		norm;
 	t_color			rgb;
 	int				spec;
+	float			ref;
 }					t_closest;
 
 typedef struct s_limit

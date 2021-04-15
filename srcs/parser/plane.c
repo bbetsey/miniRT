@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:53:24 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:31:48 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 14:53:47 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ void	fill_color_pl(t_pl *data, char **arr, t_scene *scene)
 		data->spec = rt_atoi(arr[3]);
 	else
 		data->spec = SPECULAR;
+	if (arr[3] && arr[4])
+		data->ref = rt_atof(arr[4]);
+	else
+		data->ref = 0;
 	free_array(coor);
 	check_rgb(data->rgb, scene);
 }
@@ -75,7 +79,8 @@ t_object	*add_plane(char *line, t_scene *scene)
 	if (!data)
 		error_handler("Can't allocate memory for plane data", scene);
 	arr = rt_split(line, " \t");
-	if (arr_len(arr) > 4 || arr_len(arr) < 3)
+	printf("Arr Len: %d\n", arr_len(arr));
+	if (arr_len(arr) > 5 || arr_len(arr) < 3)
 		error_handler("invalid number of arguments for plane", scene);
 	fill_vector_pl(data, arr, scene);
 	fill_color_pl(data, arr, scene);

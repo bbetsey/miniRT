@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+         #
+#    By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/13 23:26:50 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/15 14:24:50 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ ${NAME}	:		${OBJS}
 				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c $< -o $@
 
 norm	:
-				@norminette $(DIR_SRCS) includes/get_next_line.h includes/minirt.h includes/parse.h includes/utils.h includes/vector.h includes/rt.h
+				@norminette $(DIR_SRCS) includes/gnl.h includes/minirt.h includes/parse.h includes/utils.h includes/vector.h includes/rt.h
 
 clean	:
 				@rm -rf ${OBJS} && rm -f check_res.o check_res_lim.o && rm -f img.bmp
