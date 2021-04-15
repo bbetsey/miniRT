@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:14 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:23:00 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 15:19:51 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,8 @@ typedef struct s_aa_thr_data
 }				t_aa_thr_data;
 
 void			trace_ray(t_scene *scene);
-t_color			intersect(t_scene *scene, t_vector ray);
+t_color			intersect(t_scene *scene, t_vector ray, t_limit lim,
+					int recursive);
 void			install_cams(t_scene *scene);
 t_closest		sp_intersect(void *data, t_vector eye, t_vector dir,
 					t_limit lim);
@@ -137,5 +138,6 @@ void			*run_thread(void *thread_data);
 void			wait_threads(pthread_t *threads, int height);
 void			anti_aliasing(t_thr_data *data, int height, int width);
 void			wait_threads(pthread_t *threads, int height);
+t_vector		reflect_ray(t_vector r, t_vector n);
 
 #endif

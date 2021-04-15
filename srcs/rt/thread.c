@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:32:30 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/13 18:38:10 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 15:20:23 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	*run_thread(void *thread_data)
 	while (data->x_start < data->x_end)
 	{
 		ray = make_ray(data->x_start, data->y, data->scene->cams);
-		data->colors[data->i] = intersect(data->scene, ray);
+		data->colors[data->i] = intersect(data->scene, ray,
+			(t_limit){1, INFINITY}, RECURSIVE);
 		data->x_start++;
 		data->i++;
 	}

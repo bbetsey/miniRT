@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 14:25:57 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 14:53:59 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 15:31:13 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ t_object	*add_sphere(char *line, t_scene *scene)
 	if (!data)
 		error_handler("Can't allocate memory for sphere data", scene);
 	arr = rt_split(line, " \t");
-	printf("Arr Len: %d\n", arr_len(arr));
 	if (arr_len(arr) < 3 || arr_len(arr) > 5)
 		error_handler("invalid number of arguments for sphere", scene);
 	data = fill_vector_sp(data, arr, scene);

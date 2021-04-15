@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:17:54 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 14:56:31 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 16:21:11 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,19 @@ t_closest	find_closest(t_closest solution, t_closest closest)
 	return (closest);
 }
 
-t_color	intersect(t_scene *scene, t_vector ray)
+t_color	intersect(t_scene *scene, t_vector ray, t_limit lim,
+int recursive)
 {
 	t_object	*obj;
 	t_closest	closest;
 	t_closest	solution;
-	t_color		tmp;
-	t_limit		lim;
+	t_vector	refl_ray;
+	t_color		res;
 
 	obj = scene->objs;
 	closest.color = BACKCOLOR;
 	closest.length = INFINITY;
 	closest.rgb = (t_color){0, 0, 0};
-	lim.min = 1;
-	lim.max = INFINITY;
 	while (obj)
 	{
 		solution = obj->equation(obj->data, scene->cams->vec,
@@ -52,9 +51,10 @@ t_color	intersect(t_scene *scene, t_vector ray)
 		obj = obj->next;
 	}
 	if (closest.color != BACKCOLOR)
-	{
-		tmp = compute_color(closest, scene, ray);
-		closest.rgb = tmp;
-	}
-	return (closest.rgb);
+		closest.rgb = compute_color(closest, scene, ray);
+	if (recursive <= 0 || closest.ref <= 0)
+        return (closest.rgb);
+	refl_ray = vec_norm(reflect_ray(vec_multi(ray, -1), closest.norm));
+	res = intersect(scene, refl_ray, (t_limit){0.0001, INFINITY}, recursive - 1);
+	return (color_sum(color_multi(closest.rgb, 1 - closest.ref), color_multi(res, closest.ref)));
 }

@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 14:24:11 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:24:29 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/15 16:17:56 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_vector	reflect_ray(t_vector r, t_vector n)
+{
+	return (vec_sub(vec_multi(n, 2.0 * vec_dot(n, r)), r));
+}
 
 float	light_point(t_vector n, t_vector l, float ratio)
 {
