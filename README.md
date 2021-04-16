@@ -1,4 +1,4 @@
 # miniRT
 Mini Ray Tracing
 
-![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.bmp?raw=true)
+![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.jpeg?raw=true)
