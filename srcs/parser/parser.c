@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:52:29 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/10 14:54:57 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/16 13:37:57 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	parser(char *line, t_scene *scene)
 		parse_ambient(&line[1], scene);
 	else if (line[0] == 'c' && line[1] == 'y')
 		parse_cylinder(&line[2], scene);
+	else if (line[0] == 'c' && line[1] == 'o')
+		parse_cone(&line[2], scene);
 	else if (line[0] == 's' && line[1] == 'p')
 		parse_sphere(&line[2], scene);
 	else if (line[0] == 'p' && line[1] == 'l')

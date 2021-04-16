@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:33:34 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 14:39:10 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/16 13:48:30 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,17 @@ typedef struct s_tr
 	float			ref;
 }					t_tr;
 
+typedef struct s_co
+{
+	t_vector		vec;
+	t_vector		n_vec;
+	double			d;
+	double			h;
+	t_color			rgb;
+	int				spec;
+	float			ref;
+}					t_co;
+
 typedef struct s_closest
 {
 	double			length;
@@ -182,5 +193,6 @@ void				parse_plane(char *line, t_scene *scene);
 void				parse_cylinder(char *line, t_scene *scene);
 void				parse_square(char *line, t_scene *scene);
 void				parse_triangle(char *line, t_scene *scene);
+void				parse_cone(char *line, t_scene *scene);
 
 #endif

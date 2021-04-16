@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+         #
+#    By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/15 23:53:59 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/16 15:01:11 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC			=	main.c\
 				rt/triangle.c\
 				rt/square.c\
 				rt/cylinder.c\
+				rt/cone.c\
 				rt/light.c\
 				rt/thread.c\
 				rt/anti_aliasing.c\
@@ -55,6 +56,7 @@ SRC			=	main.c\
 				parser/light.c\
 				parser/sphere.c\
 				parser/plane.c\
+				parser/cone.c\
 				parser/cylinder.c\
 				parser/square.c\
 				parser/triangle.c\

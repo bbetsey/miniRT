@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 21:28:14 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 20:53:51 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/16 16:38:45 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,24 @@ typedef struct s_cy_eq
 	double		z1;
 	double		z2;
 }					t_cy_eq;
+
+typedef struct s_co_eq
+{
+	t_vector	w;
+	t_vector	cp;
+	double		m;
+	double		k;
+	double		t1;
+	double		t2;
+	double		a;
+	double		b;
+	double		c;
+	double		d;
+	double		x1;
+	double		x2;
+	t_vector	eye;
+	t_vector	dir;
+}				t_co_eq;
 
 typedef struct s_specular
 {
@@ -130,6 +148,8 @@ t_closest		tr_intersect(void *data, t_vector eye, t_vector dir,
 t_closest		sq_intersect(void *data, t_vector eye, t_vector dir,
 					t_limit lim);
 t_closest		cy_intersect(void *data, t_vector eye, t_vector dir,
+					t_limit lim);
+t_closest		co_intersect(void *data, t_vector eye, t_vector dir,
 					t_limit lim);
 float			lightning(t_scene *scene);
 float			make_specular(t_specular spec);
