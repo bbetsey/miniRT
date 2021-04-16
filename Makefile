@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+         #
+#    By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 20:15:44 by bbetsey           #+#    #+#              #
-#    Updated: 2021/04/15 14:24:50 by bbetsey          ###   ########.fr        #
+#    Updated: 2021/04/15 23:53:59 by bbetsey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ all		:		${NAME}
 ${NAME}	:		${OBJS}
 				@make -C mlx/
 				@gcc -Wall -Wextra -Werror ${MLX_FLAGS} -I ${DIR_HEADERS} ${MLX} ${OBJS} -o ${NAME} -pthread
-				@echo && echo "\033[1m\033[32m» Assembled ⚑\033[0m" && echo
+				@echo "\033[1m\033[32m» Assembled ⚑\033[0m"
 
 %.o		: 		%.c
 				@gcc -Wall -Wextra -Werror -I ${DIR_HEADERS} -c $< -o $@
