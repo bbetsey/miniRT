@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 13:24:10 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/16 20:50:27 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/17 23:14:34 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define BACK_B		39
 # define BACKCOLOR	0
 # define SPECULAR	300
-# define RECURSIVE	2
+# define RECURSIVE	15
 # define DIFF		6
 # define PIXEL_DIV	4
 

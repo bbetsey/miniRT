@@ -6,7 +6,7 @@
 /*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 18:34:00 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 20:50:32 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/17 17:03:04 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ void	anti_aliasing(t_thr_data *data, int width, int height)
 		i++;
 	}
 	wait_threads(threads, height - 1);
+	free(aa_data);
 	free(threads);
 }

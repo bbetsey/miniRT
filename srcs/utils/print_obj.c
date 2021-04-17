@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_obj.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbetsey <bbetsey12@gmail.com>              +#+  +:+       +#+        */
+/*   By: bbetsey <bbetsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:56:30 by bbetsey           #+#    #+#             */
-/*   Updated: 2021/04/15 00:17:29 by bbetsey          ###   ########.fr       */
+/*   Updated: 2021/04/17 17:58:10 by bbetsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	print_triangle(t_object *triangle)
 
 	data = triangle->data;
 	printf("Triangle:\t[%.1f %.1f %.1f] [%.1f %.1f %.1f] "
-		"[%.1f %.1f %.1f] [%d %d %d]\n",
+		"[%.1f %.1f %.1f] [%d %d %d] [%d] [%.1f]\n",
 		data->v1.x, data->v1.y, data->v1.z, data->v2.x, data->v2.y,
 		data->v2.z, data->v3.x, data->v3.y, data->v3.z, data->rgb.r,
-		data->rgb.g, data->rgb.b);
+		data->rgb.g, data->rgb.b, data->spec, data->ref);
 }
 
 void	print_square(t_object *square)
