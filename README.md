@@ -14,6 +14,12 @@ make
 * sphere
 * cylinder
 
+**Syntax**
+```
+R [width] [height]                                                      // window resolution
+A [rate] [r,g,b]                                                        // ambient lighting
+c [x,y,z]*coordinates* [x,y,z]*normalized orientation vector* [r,g,b]   // camera
+```
 
 ![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.jpeg?raw=true)
 
