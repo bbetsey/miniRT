@@ -1,7 +1,7 @@
 # miniRT | 107/100
-## Mini Ray Tracing
+## Mini Ray Tracing with miniLibX
 
-### Build it
+** Build it **
 ```
 make
 ./miniRT [filename]
