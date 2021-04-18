@@ -1,10 +1,10 @@
 # miniRT | 107/100
 ## Mini Ray Tracing
 
-> Build it
+### Build it
 ```
 make
-./miniRT scenes/...
+./miniRT [filename]
 ```
 ![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.jpeg?raw=true)
 
