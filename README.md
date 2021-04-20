@@ -13,9 +13,10 @@ make
 * sphere
 * cylinder
 
+**RESOLUTION**
 ```
-RESOLUTION
 R 1920 1080
+----------------
 ・identifier: R
 ・x render size
 ・y render size
