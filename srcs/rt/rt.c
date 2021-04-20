@@ -53,9 +53,9 @@ void	trace_ray(t_scene *scene)
 	wait_threads(threads, scene->res.height);
 	anti_aliasing(data, scene->res.width, scene->res.height);
 	pixel_put(data, scene);
-	if (threads)
+	if (*threads)
 		free(threads);
-	if (data)
+	if (*data)
 		free(data);
 }
 
