@@ -23,7 +23,7 @@ R 1920 1080
 **Ambient lightning:**
 ```
 A 0.2 255,255,255
---------------------
+------------------
 » identifier: A
 » ambient lighting ratio in range [0.0,1.0]
 » R,G,B colors in range [0,255]
@@ -52,7 +52,7 @@ l -40.0,50.0,0  0.6  10,255,255
 **Sphere:**
 ```
 sp 0.0,0.0,20.6  12.6  10,0,255   300   0
---------------------------------
+------------------------------------------
 » identifier: sp
 » x,y,z coordinates of the sphere center
 » the sphere diameter
@@ -64,7 +64,7 @@ sp 0.0,0.0,20.6  12.6  10,0,255   300   0
 **Plane:**
 ```
 pl 0.0,0.0,20.6  0,1.0,0  10,0,255   300   0.2
----------------------------------------------
+-----------------------------------------------
 » identifier: pl
 » x,y,z coordinates
 » 3d normalized orientation vector. In range [-1,1] for each x,y,z axis
