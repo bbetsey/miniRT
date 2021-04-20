@@ -4,10 +4,9 @@ Multithreaded rendering with Anti-aliasing
 
 ![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.jpeg?raw=true)
 
-```
-make
-./miniRT [filename.rt]
-```
+```make```to build
+```./miniRT [filename.rt]```to run
+```./miniRT [filename.rt] --save```to save as img.bmp
 
 ## [filename.rt] syntax
 
