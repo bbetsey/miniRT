@@ -1,6 +1,8 @@
 # miniRT | 107/100
 ## Mini Ray Tracing with miniLibX
 
+![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.jpeg?raw=true)
+
 ```
 make
 ./miniRT [filename.rt]
@@ -45,8 +47,6 @@ l -40.0,50.0,0  0.6  10,255,255
 » the light brightness ratio in range [0.0, 1.0]
 » R,G,B colors in range [0 - 255]
 ```
-
-![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.jpeg?raw=true)
 
 ![image: big](https://github.com/bbetsey/miniRT/blob/master/img/big_one.jpeg?raw=true)
 
