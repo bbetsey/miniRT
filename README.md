@@ -8,7 +8,7 @@ make
 ./miniRT [filename.rt]
 ```
 
-### Map syntax *filename.rt*
+## Map syntax *filename.rt*
 
 **Resolution:**
 ```
@@ -46,6 +46,43 @@ l -40.0,50.0,0  0.6  10,255,255
 » x,y,z coordinates of the light point
 » the light brightness ratio in range [0.0, 1.0]
 » R,G,B colors in range [0 - 255]
+```
+
+**Sphere:**
+```
+sp 0.0,0.0,20.6  12.6  10,0,255   300   0
+--------------------------------
+» identifier: sp
+» x,y,z coordinates of the sphere center
+» the sphere diameter
+» R,G,B colors in range [0 - 255]
+» specular (optional, default: 300)
+» reflective (optional, default: 0) in range [0.0, 1.0]
+```
+
+**Plane:**
+```
+pl 0.0,0.0,20.6  0,1.0,0  10,0,255   300   0.2
+---------------------------------------------
+» identifier: pl
+» x,y,z coordinates
+» 3d normalized orientation vector. In range [-1,1] for each x,y,z axis
+» R,G,B colors in range [0 - 255]
+» specular (optional, default: 300)
+» reflective (optional, default: 0) in range [0.0, 1.0]
+```
+
+**Square:**
+```
+sq 0.0,0.0,20.6   1.0,0.0,0.0   12.6   255,0,255   300   0.6
+-------------------------------------------------------------
+» identifier: sq
+» x,y,z coordinates of the square center
+» 3d normalized orientation vector. In range [-1,1] for each x,y,z axis
+» side size
+» R,G,B colors in range [0 - 255]
+» specular (optional, default: 300)
+» reflective (optional, default: 0) in range [0.0, 1.0]
 ```
 
 ![image: big](https://github.com/bbetsey/miniRT/blob/master/img/big_one.jpeg?raw=true)
