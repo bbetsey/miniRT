@@ -9,7 +9,7 @@ make
 ./miniRT [filename.rt]
 ```
 
-## Map syntax *filename.rt*
+## [filename.rt] syntax
 
 **Resolution:**
 ```
