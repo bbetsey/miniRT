@@ -23,7 +23,7 @@
 # define BACK_B		39
 # define BACKCOLOR	0
 # define SPECULAR	300
-# define RECURSIVE	15
+# define RECURSIVE	1
 # define DIFF		6
 # define PIXEL_DIV	4
 
