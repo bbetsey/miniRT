@@ -3,7 +3,6 @@
 Multithreaded rendering with Anti-aliasing
 
 ![image: wolf](https://github.com/bbetsey/miniRT/blob/master/img/wolf.jpeg?raw=true)
-![image: dragon](https://github.com/bbetsey/miniRT/blob/master/img/dragon.png?raw=true)
 
 * ```make``` to build
 * ```./miniRT [filename.rt]``` to run
