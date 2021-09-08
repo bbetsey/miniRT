@@ -55,7 +55,7 @@ void	trace_ray(t_scene *scene)
 	pixel_put(data, scene);
 	if (*threads)
 		free(threads);
-	if (*data)
+	if (data)
 		free(data);
 }
 
